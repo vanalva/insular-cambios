@@ -1,0 +1,151 @@
+/* Home Page Styles - UI Reference Design */
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.heroText h1 {
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 200;
+  line-height: 0.9;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-brand);
+}
+
+.heroDescription {
+  font-size: var(--body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.heroImage {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--color-background-dark);
+}
+
+.heroImage img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+/* Rates Section */
+.ratesSection {
+  background: var(--color-background);
+  padding: var(--space-xl) 0;
+}
+
+.ratesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.rateCard {
+  padding: calc(var(--space-lg) * 0.9) var(--space-lg);
+  border-radius: var(--radius-module);
+  background: linear-gradient(135deg, var(--color-card-gradient-start) 0%, var(--color-card-gradient-end) 100%);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  min-height: 160px;
+}
+
+.rateCard[data-tone="eur"] {
+  background: linear-gradient(135deg, var(--color-card-gradient-end) 0%, var(--color-firma-azul) 100%);
+}
+
+.rateCard[data-tone="date"] {
+  background: var(--color-background-dark);
+}
+
+.rateHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rateLabel {
+  font-size: var(--body-sm);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  opacity: 0.9;
+}
+
+.rateIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.rateValue {
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* Other sections */
+.remittanceSection,
+.globalSection,
+.locationSection,
+.paymentMethods,
+.faq,
+.ctaSection {
+  background: var(--color-background);
+  padding: var(--space-2xl) 0;
+}
+
+.ctaCard {
+  background: var(--color-background-dark);
+  padding: var(--space-2xl);
+  border-radius: 24px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroImage {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: var(--space-lg);
+  }
+
+  .hero {
+    min-height: auto;
+    padding: var(--space-xl) 0;
+  }
+
+  .ratesGrid {
+    grid-template-columns: 1fr;
+  }
+}

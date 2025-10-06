@@ -1,0 +1,53 @@
+/* Aliados Page Styles */
+
+.hero {
+  background: linear-gradient(135deg, var(--color-firma-azul) 0%, var(--color-red-electrica) 100%);
+  padding: var(--space-3xl) 0 var(--space-2xl);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.hero h1 {
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.hero p {
+  color: var(--color-white);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.partnersGrid {
+  padding: var(--space-2xl) 0;
+  background: var(--color-white);
+}
+
+.partnerCard {
+  text-align: center;
+  padding: var(--space-md);
+}
+
+.partnerLogo {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.logoPlaceholder {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-firma-azul);
+}
+
+.carousel {
+  padding: var(--space-xl) 0;
+  background: var(--color-saldo-claro);
+}
+
+.benefits {
+  padding: var(--space-2xl) 0;
+  background: var(--color-white);
+}

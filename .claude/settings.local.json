@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create vite@latest:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx vite:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(npm ls:*)",
+      "Bash(node_modules/.bin/vite:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

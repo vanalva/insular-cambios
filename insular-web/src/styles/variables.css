@@ -1,0 +1,95 @@
+/* Design System Variables - Insular Casa de Cambio */
+
+:root {
+  /* Color Tokens - Exact values from Insular Styleguide */
+  --color-background: #101021; /* Primary background - Pantone Black 6 C */
+  --color-background-dark: #131a4e; /* Deep blue - Pantone 2766 C */
+  --color-card-gradient-start: #422BE2; /* Electric blue/purple - Pantone 2368 C */
+  --color-card-gradient-end: #9bd1b8; /* Mint green - Pantone 344 C */
+  --color-accent: #f93243; /* Vibrant red for CTAs - Pantone Red 032 C */
+  --color-accent-hover: #ff5577; /* Lighter pink on hover */
+  --color-text-primary: #ffffff; /* White text */
+  --color-text-secondary: #e7e9e4; /* Soft off-white - Pantone 663 C */
+  --color-border: #131a4e; /* Deep blue border */
+
+  /* Legacy color names - Exact values from Insular Styleguide */
+  --color-caja-fuerte: #101021; /* RGB 16,16,33 - Pantone Black 6 C */
+  --color-firma-azul: #131a4e; /* RGB 19,26,78 - Pantone 2766 C */
+  --color-red-electrica: #422BE2; /* Electric blue/purple - Pantone 2368 C */
+  --color-alerta: #f93243; /* RGB 249,50,67 - Pantone Red 032 C */
+  --color-billete-nuevot: #9bd1b8; /* RGB 155,209,184 - Pantone 344 C */
+  --color-saldo-claro: #e7e9e4; /* RGB 231,233,228 - Pantone 663 C */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Typography Scale - Bricolage Grotesque & Roboto */
+  --font-primary: "Bricolage Grotesque", sans-serif; /* For H1/H2 headings */
+  --font-secondary: "Roboto", sans-serif; /* For paragraphs and UI labels */
+  --font-weight-medium: 500; /* For H1/H2 headings */
+  --font-weight-light: 300; /* For secondary headings and large supporting text */
+  --font-weight-regular: 400; /* For body copy */
+  --line-height-base: 1.6;
+  
+  /* Typography sizes */
+  --h1: clamp(44px, 7vw, 84px);
+  --h2: clamp(28px, 3.8vw, 40px);
+  --h3: clamp(22px, 3.2vw, 28px);
+  --h4: clamp(20px, 2.5vw, 24px);
+  --body: 18px;
+  --body-sm: 16px;
+  --body-xs: 14px;
+
+  /* Spacing - 8-point grid system */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 128px;
+
+  /* Container */
+  --container-max: 1200px;
+  --container-padding: var(--space-md);
+
+  /* Border Radius - Insular distinctive module shape */
+  --radius-module: 0 24px 0 24px; /* Distinctive module shape */
+  --radius-button: 32px; /* Primary button radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* Shadows - flattened */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+
+  /* Transitions - GSAP animations */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease; /* Button hover transition */
+  --transition-slow: 0.4s ease;
+  
+  /* Button specifications */
+  --button-padding: 14px 32px; /* Primary button padding */
+  --button-min-height: 44px; /* Minimum hit area */
+  --button-shadow-hover: 0 8px 20px rgba(0,0,0,0.2);
+  --button-transform-hover: translateY(-2px);
+
+  /* Z-index */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-tooltip: 600;
+  --z-notification: 700;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: var(--space-sm);
+  }
+}

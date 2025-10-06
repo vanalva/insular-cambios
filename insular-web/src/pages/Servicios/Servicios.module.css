@@ -1,0 +1,71 @@
+/* Servicios Page Styles */
+
+.hero {
+  background: linear-gradient(135deg, var(--color-firma-azul) 0%, var(--color-red-electrica) 100%);
+  padding: var(--space-3xl) 0 var(--space-2xl);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.hero h1 {
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.hero p {
+  color: var(--color-white);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services {
+  padding: var(--space-2xl) 0;
+  background: var(--color-white);
+}
+
+.serviceCard {
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.process {
+  padding: var(--space-2xl) 0;
+  background: var(--color-saldo-claro);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.step {
+  text-align: center;
+}
+
+.stepNumber {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-red-electrica);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
