@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import Section from '../../components/Section';
-import Card from '../../components/Card';
+import CTAButton from '../../components/CTAButton';
 import styles from './Servicios.module.css';
 
 const Servicios = () => {
@@ -9,36 +8,44 @@ const Servicios = () => {
     // ScrollTrigger animations will be added here
   }, []);
 
-  const services = [
+  const receiveOptions = [
     {
-      title: 'Cambio de divisas',
-      description: 'Compra y venta de más de 20 divisas internacionales con las mejores tasas del mercado.',
-      icon: '💱'
+      title: 'Pago móvil',
+      description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
+      icon: '→'
     },
     {
-      title: 'Transferencias internacionales',
-      description: 'Envía dinero a cualquier parte del mundo de forma segura y rápida.',
-      icon: '🌍'
+      title: 'Crédito inmediato',
+      description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
+      icon: '→'
     },
     {
-      title: 'Cuenta multi-divisa',
-      description: 'Mantén saldos en múltiples monedas y cambia entre ellas al instante.',
-      icon: '💳'
-    },
+      title: 'Retiro físico',
+      description: 'Retiro en nuestra agencia física en Caracas: Avenida Francisco de Miranda, Torre Seguros Sudamerica, local PB-7 Urbanización El Rosal, municipio Chacao.',
+      icon: '→'
+    }
+  ];
+
+  const benefits = [
     {
-      title: 'Asesoría financiera',
-      description: 'Recibe asesoramiento experto sobre el mejor momento para cambiar tus divisas.',
-      icon: '📊'
-    },
-    {
-      title: 'Servicio corporativo',
-      description: 'Soluciones personalizadas para empresas con necesidades de cambio frecuentes.',
-      icon: '🏢'
-    },
-    {
-      title: 'API para desarrolladores',
-      description: 'Integra nuestros servicios de cambio en tu plataforma con nuestra API.',
+      title: 'Rapidez y Eficiencia',
+      description: 'Nuestras operaciones son rápidas y directas',
       icon: '⚡'
+    },
+    {
+      title: 'Legalidad y Respaldo',
+      description: 'Operamos 100% dentro del marco legal venezolano, garantizando su tranquilidad.',
+      icon: '🏛️'
+    },
+    {
+      title: 'Conexión Global',
+      description: 'Gracias a nuestros aliados internacionales, conectamos a Venezuela con el mundo.',
+      icon: '🌐'
+    },
+    {
+      title: 'Comodidad Total',
+      description: 'Elija entre opciones digitales (Pago Móvil) o presenciales para sus transacciones.',
+      icon: '💳'
     }
   ];
 
@@ -49,60 +56,89 @@ const Servicios = () => {
         <meta name="description" content="Descubre todos nuestros servicios de cambio de divisas, transferencias internacionales y soluciones financieras." />
       </Helmet>
 
-      <Section className={styles.hero}>
-        <div className="container">
-          <h1 className="h1" data-animate="fade-up">Nuestros servicios</h1>
-          <p className="body" data-animate="fade-up" data-delay="0.2">
-            Soluciones completas para todas tus necesidades de cambio de divisas
-          </p>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroBackground}>
+          <img src="/images/temp/intuitivo.webp" alt="" />
         </div>
-      </Section>
-
-      <Section className={styles.services}>
         <div className="container">
-          <div className="grid grid-3">
-            {services.map((service, index) => (
-              <div key={index} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
-                <Card>
-                  <div className={styles.serviceCard}>
-                    <span className={styles.icon}>{service.icon}</span>
-                    <h3 className="h3">{service.title}</h3>
-                    <p className="body-sm">{service.description}</p>
-                  </div>
-                </Card>
+          <div className={styles.heroContent}>
+            <div className={styles.heroText} data-animate="fade-up">
+              <h1>Envía dinero a tus familiares o amigos desde 200 países hacia Venezuela</h1>
+              <p>a través de nuestra red de aliados internacionales.</p>
+              <div className={styles.heroActions}>
+                <CTAButton text="¡Empieza ahora!" variant="primary" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Marquee Section - Partners */}
+      <div className={styles.marqueeWrapper}>
+        <div className={styles.marquee}>
+          <div className={styles.marqueeContent}>
+            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
+            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
+            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
+            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
+            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
+            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
+            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
+            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
+          </div>
+          <div className={styles.marqueeContent} aria-hidden="true">
+            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
+            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
+            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
+            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
+            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
+            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
+            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
+            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
+          </div>
+        </div>
+      </div>
+
+      {/* Receive Options Section */}
+      <section className={styles.receiveSection}>
+        <div className="container">
+          <div className={styles.receiveGrid}>
+            <div className={styles.receiveHeader} data-animate="fade-right">
+              <h2>Elige cómo deseas recibir tu dinero</h2>
+              <CTAButton text="¡Haz click aquí!" variant="primary" />
+            </div>
+            <div className={styles.receiveCards}>
+              {receiveOptions.map((option, index) => (
+                <div key={index} className={styles.receiveCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
+                  <div className={styles.receiveCardIcon}>{option.icon}</div>
+                  <h3>{option.title}</h3>
+                  <p>{option.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className={styles.benefitsSection}>
+        <div className="container">
+          <div className={styles.benefitsHeader}>
+            <h2>Beneficios</h2>
+            <p>En Insular Casa de Cambio, combinamos seguridad y conveniencia para ofrecerle un servicio de cambio de divisas excepcional.</p>
+          </div>
+          <div className={styles.benefitsGrid}>
+            {benefits.map((benefit, index) => (
+              <div key={index} className={styles.benefitCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
+                <div className={styles.benefitIcon}>{benefit.icon}</div>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.description}</p>
               </div>
             ))}
           </div>
         </div>
-      </Section>
-
-      <Section className={styles.process}>
-        <div className="container">
-          <h2 className="h2 text-center" data-animate="fade-up">¿Cómo funciona?</h2>
-          <div className={styles.steps}>
-            <div className={styles.step} data-animate="fade-up" data-delay="0.1">
-              <div className={styles.stepNumber}>1</div>
-              <h4 className="h4">Regístrate</h4>
-              <p className="body-sm">Crea tu cuenta en minutos con verificación instantánea</p>
-            </div>
-            <div className={styles.step} data-animate="fade-up" data-delay="0.2">
-              <div className={styles.stepNumber}>2</div>
-              <h4 className="h4">Cotiza</h4>
-              <p className="body-sm">Obtén el tipo de cambio en tiempo real sin compromisos</p>
-            </div>
-            <div className={styles.step} data-animate="fade-up" data-delay="0.3">
-              <div className={styles.stepNumber}>3</div>
-              <h4 className="h4">Confirma</h4>
-              <p className="body-sm">Acepta la tasa y realiza tu transacción de forma segura</p>
-            </div>
-            <div className={styles.step} data-animate="fade-up" data-delay="0.4">
-              <div className={styles.stepNumber}>4</div>
-              <h4 className="h4">Recibe</h4>
-              <p className="body-sm">Tu dinero llegará en minutos a tu cuenta destino</p>
-            </div>
-          </div>
-        </div>
-      </Section>
+      </section>
     </>
   );
 };

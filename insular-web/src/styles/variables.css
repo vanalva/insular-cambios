@@ -1,8 +1,16 @@
 /* Design System Variables - Insular Casa de Cambio */
 
 :root {
-  /* Color Tokens - Exact values from Insular Styleguide */
-  --color-background: #101021; /* Primary background - Pantone Black 6 C */
+  /* Base Brand Colors - Never change */
+  --brand-firma-azul: #15152D; /* RGB 19,26,78 - Pantone 2766 C */
+  --brand-red-electrica: #422BE2; /* Electric blue/purple - Pantone 2368 C */
+  --brand-alerta: #f93243; /* RGB 249,50,67 - Pantone Red 032 C */
+  --brand-billete-nuevot: #9bd1b8; /* RGB 155,209,184 - Pantone 344 C */
+  --brand-saldo-claro: #e7e9e4; /* RGB 231,233,228 - Pantone 663 C */
+  --brand-caja-fuerte: #101021; /* RGB 16,16,33 - Pantone Black 6 C */
+
+  /* Dark Mode (Default) */
+  --color-background: #15152D; /* Primary background - Pantone Black 6 C */
   --color-background-dark: #131a4e; /* Deep blue - Pantone 2766 C */
   --color-card-gradient-start: #422BE2; /* Electric blue/purple - Pantone 2368 C */
   --color-card-gradient-end: #9bd1b8; /* Mint green - Pantone 344 C */
@@ -11,9 +19,10 @@
   --color-text-primary: #ffffff; /* White text */
   --color-text-secondary: #e7e9e4; /* Soft off-white - Pantone 663 C */
   --color-border: #131a4e; /* Deep blue border */
+  --color-border-grey: rgba(231, 233, 228, 0.15); /* Subtle grey border for glass UI */
 
   /* Legacy color names - Exact values from Insular Styleguide */
-  --color-caja-fuerte: #101021; /* RGB 16,16,33 - Pantone Black 6 C */
+  --color-caja-fuerte: #15152D; /* RGB 16,16,33 - Pantone Black 6 C */
   --color-firma-azul: #131a4e; /* RGB 19,26,78 - Pantone 2766 C */
   --color-red-electrica: #422BE2; /* Electric blue/purple - Pantone 2368 C */
   --color-alerta: #f93243; /* RGB 249,50,67 - Pantone Red 032 C */
@@ -23,7 +32,8 @@
   --color-black: #000000;
 
   /* Typography Scale - Bricolage Grotesque & Roboto */
-  --font-primary: "Bricolage Grotesque", sans-serif; /* For H1/H2 headings */
+  --font-brand: "Bricolage Grotesque", sans-serif; /* Primary brand font for headings and display text */
+  --font-primary: "Bricolage Grotesque", sans-serif; /* Alias for brand font */
   --font-secondary: "Roboto", sans-serif; /* For paragraphs and UI labels */
   --font-weight-medium: 500; /* For H1/H2 headings */
   --font-weight-light: 300; /* For secondary headings and large supporting text */
@@ -35,9 +45,9 @@
   --h2: clamp(28px, 3.8vw, 40px);
   --h3: clamp(22px, 3.2vw, 28px);
   --h4: clamp(20px, 2.5vw, 24px);
-  --body: 18px;
-  --body-sm: 16px;
-  --body-xs: 14px;
+  --body: clamp(18px, 1.25vw, 20px);
+  --body-sm: clamp(16px, 1.1vw, 18px);
+  --body-xs: clamp(14px, 0.95vw, 16px);
 
   /* Spacing - 8-point grid system */
   --space-xs: 8px;
@@ -48,16 +58,19 @@
   --space-2xl: 96px;
   --space-3xl: 128px;
 
-  /* Container */
-  --container-max: 1200px;
+  /* Container System - Multiple widths for different layouts */
+  --container-full: 100vw; /* Full viewport width */
+  --container-max: 1600px; /* Standard contained width */
+  --container-narrow: 75vw; /* 75% width for centered sections */
   --container-padding: var(--space-md);
+  --container-padding-lg: var(--space-lg);
 
   /* Border Radius - Insular distinctive module shape */
-  --radius-module: 0 24px 0 24px; /* Distinctive module shape */
-  --radius-button: 32px; /* Primary button radius */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-module: 24px 0 24px 0; /* Distinctive corner treatment: top-left rounded, bottom-right rounded */
+  --radius-button: 26px 0 26px 0; /* Primary button radius with same treatment */
+  --radius-sm: 12px 0 12px 0;
+  --radius-md: 16px 0 16px 0;
+  --radius-lg: 24px 0 24px 0;
 
   /* Shadows - flattened */
   --shadow-sm: none;
@@ -85,6 +98,19 @@
   --z-popover: 500;
   --z-tooltip: 600;
   --z-notification: 700;
+}
+
+/* Light Mode Theme - Apply .light-mode class to body or parent element */
+.light-mode {
+  --color-background: #ffffff; /* White background */
+  --color-background-dark: #f5f5f5; /* Light gray */
+  --color-text-primary: #101021; /* Dark text */
+  --color-text-secondary: #4a4a4a; /* Gray text */
+  --color-border: #e0e0e0; /* Light border */
+
+  /* Accent colors remain the same for brand consistency */
+  --color-accent: #f93243;
+  --color-accent-hover: #ff5577;
 }
 
 /* Responsive breakpoints */

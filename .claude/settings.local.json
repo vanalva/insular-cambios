@@ -9,7 +9,9 @@
       "Bash(npx vite:*)",
       "Bash(npm cache clean:*)",
       "Bash(npm ls:*)",
-      "Bash(node_modules/.bin/vite:*)"
+      "Bash(node_modules/.bin/vite:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
