@@ -12,7 +12,18 @@
       "Bash(node_modules/.bin/vite:*)",
       "Bash(git log:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate website styling and layout improvements\n\n- Increased container max-width from 1200px to 1600px for wider layout\n- Updated header with transparent background and consistent padding using container-padding\n- Implemented opacity-based transitions for navbar scroll effect with frosted glass blur\n- Redesigned Servicios page hero with background image, gradient overlay, and full-width layout\n- Added partner logo marquee section matching Home page design with fade gradients\n- Created bright blue cards for payment options (Pago móvil, Crédito inmediato, Retiro físico)\n- Updated all page hero sections (Conocenos, Servicios, Aliados, Contacto) with fluid backgrounds\n- Added \"inherit\" variant to CTAButton for use in colored containers\n- Implemented FAQ accordion functionality with smooth animations\n- Added animated exchange rate numbers with eased transitions\n- Updated footer with full logo, improved column layout, and purple social icons\n- Applied consistent rounded corner pattern (24px 0 24px 0) across all cards and sections\n- Removed body top padding to support transparent header overlay\n- Added hero section padding matching container gutters on all sides\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate website styling and layout improvements\n\n- Increased container max-width from 1200px to 1600px for wider layout\n- Updated header with transparent background and consistent padding using container-padding\n- Implemented opacity-based transitions for navbar scroll effect with frosted glass blur\n- Redesigned Servicios page hero with background image, gradient overlay, and full-width layout\n- Added partner logo marquee section matching Home page design with fade gradients\n- Created bright blue cards for payment options (Pago móvil, Crédito inmediato, Retiro físico)\n- Updated all page hero sections (Conocenos, Servicios, Aliados, Contacto) with fluid backgrounds\n- Added \"inherit\" variant to CTAButton for use in colored containers\n- Implemented FAQ accordion functionality with smooth animations\n- Added animated exchange rate numbers with eased transitions\n- Updated footer with full logo, improved column layout, and purple social icons\n- Applied consistent rounded corner pattern (24px 0 24px 0) across all cards and sections\n- Removed body top padding to support transparent header overlay\n- Added hero section padding matching container gutters on all sides\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(npm run build:*)",
+      "Bash(git restore:*)",
+      "Bash(npm ci:*)",
+      "Bash(grep:*)",
+      "Bash(npx pnpm install:*)",
+      "Bash(npx pnpm run dev:*)",
+      "Bash(for file in */index.tsx)",
+      "Bash(do sed -i \"s/import { Helmet } from ''react-helmet-async'';/\\/\\/ import { Helmet } from ''react-helmet-async'';/g\" \"$file\")",
+      "Bash(done)",
+      "Bash(do sed -i 's/<Helmet>/{\\/\\* <Helmet>/g; s/<\\/Helmet>/<\\/Helmet> \\*\\/}/g' \"$file\")",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
