@@ -41,6 +41,7 @@
   --line-height-base: 1.6;
   
   /* Typography sizes - Fluid rem-based system */
+  --display: clamp(3.5rem, 3.214rem + 1.429vw, 6rem); /* ~56px - 96px - Large display text */
   --h1: clamp(2.75rem, 2.286rem + 2.321vw, 5.25rem); /* ~44px - 84px */
   --h2: clamp(1.75rem, 1.464rem + 1.429vw, 2.5rem); /* ~28px - 40px */
   --h3: clamp(1.375rem, 1.179rem + 0.982vw, 1.75rem); /* ~22px - 28px */

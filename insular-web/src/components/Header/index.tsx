@@ -6,7 +6,10 @@ import styles from './Header.module.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [displayScrolled, setDisplayScrolled] = useState(false);
+  const [applyScrolledClass, setApplyScrolledClass] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
   const location = useLocation();
 
   // Refs for GSAP animations
@@ -15,9 +18,48 @@ const Header = () => {
   const menuNavRef = useRef<HTMLElement>(null);
   const menuFooterRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const headerContentRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Initialize opacity on mount
+  useEffect(() => {
+    if (headerContentRef.current && headerRef.current) {
+      gsap.set(headerContentRef.current, { opacity: 1 });
+      gsap.set(headerRef.current, { opacity: 1 });
+      setIsInitialized(true);
+    }
+  }, []);
 
   // Check if current page has full-width hero that needs double padding
   const hasFullWidthHero = location.pathname === '/contacto' || location.pathname === '/servicios' || location.pathname === '/aliados' || location.pathname === '/conocenos';
+
+  // Crossfade navbar on scroll
+  useEffect(() => {
+    if (!headerContentRef.current || !headerRef.current || !isInitialized) return;
+
+    // Kill any existing animations to prevent getting stuck
+    gsap.killTweensOf([headerContentRef.current, headerRef.current]);
+
+    // Fade out both header container and content
+    gsap.to([headerRef.current, headerContentRef.current], {
+      opacity: 0,
+      duration: 0.25,
+      ease: 'power2.out',
+      onComplete: () => {
+        // Update all states while invisible
+        setDisplayScrolled(isScrolled);
+        setApplyScrolledClass(isScrolled);
+        // Immediately fade back in with no delay
+        requestAnimationFrame(() => {
+          gsap.to([headerRef.current, headerContentRef.current], {
+            opacity: 1,
+            duration: 0.25,
+            ease: 'power2.in'
+          });
+        });
+      }
+    });
+  }, [isScrolled, isInitialized]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -226,11 +268,11 @@ const Header = () => {
 
   return (
     <>
-      <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${hasFullWidthHero ? styles.fullWidthHero : ''}`}>
+      <header ref={headerRef} className={`${styles.header} ${applyScrolledClass ? styles.scrolled : ''} ${hasFullWidthHero ? styles.fullWidthHero : ''}`}>
         <div className="container">
-          <div className={styles.headerContent}>
+          <div ref={headerContentRef} className={styles.headerContent}>
             <Link to="/" className={styles.logo} aria-label="Volver al inicio">
-              <AnimatedLogo isScrolled={isScrolled} />
+              <AnimatedLogo isScrolled={displayScrolled} />
             </Link>
 
             <nav className={`${styles.nav} ${isMobileOpen ? styles.mobileOpen : ''}`}>

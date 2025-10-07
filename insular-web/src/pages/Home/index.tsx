@@ -749,8 +749,10 @@ const Home = () => {
       {/* FAQ Section */}
       <Section className={styles.faqSection} id="faq">
         <div className="container">
-          <h2 className={styles.faqTitle}>Preguntas<br />Frecuentes</h2>
-          <div className={styles.faqContent}>
+          <div className={styles.faqGrid}>
+            <div data-animate="fade-right" className={styles.faqLeft}>
+              <h2 className={styles.faqTitle}>Preguntas<br />Frecuentes</h2>
+              <div className={styles.faqContent}>
             <div className={styles.faqList}>
               <div className={styles.faqItemWrapper} data-animate="fade-up">
                 <button className={`${styles.faqItem} ${openFaqIndex === 0 ? styles.faqItemOpen : ''}`} onClick={() => toggleFaq(0)}>
@@ -808,12 +810,21 @@ const Home = () => {
                 )}
               </div>
             </div>
-            <div className={styles.faqCta} data-animate="fade-up" data-delay="0.5">
-              <h3>¿Aún tienes alguna pregunta?</h3>
-              <p>
-                ¿No encuentras la respuesta a tu pregunta? Habla con nuestro Chat para resolver cualquier inquietud.
-              </p>
-              <CTAButton text="Hablar con Chat" variant="inherit" />
+            </div>
+            </div>
+
+            <div data-animate="fade-left" className={styles.faqCtaContainer}>
+              <div className={styles.faqCtaCard}>
+                <div className={styles.faqCtaImage}></div>
+                <div className={styles.faqCtaContent}>
+                  <h2 className="h2 text-white">¿Aún tienes alguna pregunta?</h2>
+                  <p className="body-sm text-white">
+                    ¿No encuentras la respuesta a tu pregunta? Habla con nuestro Chat para resolver cualquier inquietud.
+                  </p>
+                  <div className={styles.faqCtaSpacer}></div>
+                  <CTAButton text="Hablar con Chat" variant="secondary" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

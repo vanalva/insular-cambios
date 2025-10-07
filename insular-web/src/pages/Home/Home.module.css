@@ -66,17 +66,19 @@
 
 .heroContent {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: clamp(1.5rem, 3vw + 2vh, 6rem);
+  grid-template-columns: 1fr 1fr; /* Equal columns for better space distribution */
+  gap: clamp(1.5rem, 3vw + 2vh, 4rem);
   align-items: center;
   position: relative;
   z-index: 3; /* above fluid effects */
   grid-row: 2;
   min-height: 0;
+  width: 100%; /* Ensure full width */
 }
 
 .heroText {
   padding-top: var(--space-md);
+  width: 100%; /* Take full width of its grid column */
 }
 
 .heroText h1 {
@@ -130,9 +132,11 @@
   position: relative;
   border-radius: 24px 0 24px 0;
   overflow: hidden;
-  aspect-ratio: 1 / 1; /* 1:1 square ratio */
-  width: clamp(200px, 20vw + 15vh, 500px);
-  flex-shrink: 1;
+  aspect-ratio: 4 / 3; /* Wider landscape ratio to grow horizontally */
+  width: 100%; /* Take full width of its grid column */
+  max-width: none; /* Remove any width constraints */
+  max-height: calc(100vh - var(--navbar-offset) - var(--space-2xl)); /* Prevent going behind navbar */
+  justify-self: end; /* Align to the right edge of the grid column */
   border: 1px solid var(--color-border-grey);
 }
 
@@ -440,7 +444,7 @@
   font-weight: 500;
   line-height: 1.15;
   color: var(--color-text-primary);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
   font-family: var(--font-primary);
 }
 
@@ -607,15 +611,25 @@
   font-weight: 500;
   line-height: 1.1;
   color: var(--color-text-primary);
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-sm);
   font-family: var(--font-primary);
 }
 
-.faqContent {
+.faqGrid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
   align-items: start;
+}
+
+.faqLeft {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.faqContent {
+  margin-top: var(--space-lg);
 }
 
 .faqList {
@@ -689,26 +703,48 @@
   }
 }
 
-.faqCta {
+.faqCtaContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.faqCtaCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: var(--color-red-electrica);
-  padding: clamp(2rem, 4vw, 3rem);
-  border-radius: 24px 0 24px 0;
-  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
-.faqCta h3 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  font-weight: 500;
+.faqCtaImage {
+  width: 100%;
+  flex: 1.2;
+  min-height: 50%;
+  background: url('/images/temp/confianza.webp') center center / cover no-repeat;
+}
+
+.faqCtaContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-lg);
+  justify-content: flex-start;
+  gap: var(--space-md);
+}
+
+.faqCtaContent h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.faqCtaContent p {
   margin-bottom: var(--space-md);
-  font-family: var(--font-primary);
 }
 
-.faqCta p {
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
-  line-height: 1.6;
-  margin-bottom: var(--space-xl);
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-light);
+.faqCtaSpacer {
+  flex: 1;
+  min-height: var(--space-lg);
 }
 
 /* ===== FINAL CTA SECTION ===== */
@@ -729,7 +765,7 @@
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   font-weight: 500;
   line-height: 1.2;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   font-family: var(--font-primary);
   max-width: 800px;
   margin-left: auto;
@@ -771,6 +807,22 @@
   }
 }
 
+/* Tablet breakpoint - starts vertical layout at 1080px */
+@media (max-width: 1080px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .heroImageWrapper {
+    width: 100%;
+    max-width: none; /* Full width at this breakpoint */
+    aspect-ratio: 16 / 9; /* Wide aspect ratio for full width effect */
+    max-height: calc(100vh - var(--navbar-offset) - var(--space-2xl)); /* Prevent going behind navbar */
+    justify-self: center;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     padding: var(--space-lg) 0 var(--space-xl) 0;
@@ -781,6 +833,8 @@
   }
 
   .heroContent {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: var(--space-lg);
     margin-bottom: var(--space-lg);
   }
 
@@ -798,11 +852,7 @@
     gap: var(--space-md);
   }
 
-  .heroImageWrapper {
-    width: 100%;
-    max-width: 300px;
-    aspect-ratio: 1 / 1;
-  }
+  /* Hero image styles are inherited from 1080px breakpoint */
 
   .remittanceGrid {
     gap: var(--space-md);
@@ -815,5 +865,24 @@
   .paymentGrid {
     grid-template-columns: 1fr;
     gap: var(--space-md);
+  }
+
+  .faqCtaContainer {
+    height: auto;
+  }
+
+  .faqCtaCard {
+    height: auto;
+  }
+
+  .faqCtaImage {
+    flex: none;
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
   }
 }

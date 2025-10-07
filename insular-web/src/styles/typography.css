@@ -1,6 +1,17 @@
 /* Typography System - Insular Casa de Cambio */
 
 /* Typography classes */
+.display {
+  font-family: var(--font-brand);
+  font-size: var(--display);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 100;
+}
+
 .h1 {
   font-family: var(--font-brand);
   font-size: var(--h1);

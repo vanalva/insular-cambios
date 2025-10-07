@@ -98,7 +98,7 @@
   font-weight: 500;
   line-height: 1.15;
   color: var(--color-text-primary);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
   font-family: var(--font-primary);
 }
 
@@ -206,7 +206,7 @@
   font-weight: 500;
   line-height: 1.15;
   color: var(--color-text-primary);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
   font-family: var(--font-primary);
 }
 
@@ -251,7 +251,7 @@
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 500;
   color: var(--color-text-primary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   font-family: var(--font-primary);
 }
 
@@ -282,7 +282,7 @@
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   font-weight: 500;
   line-height: 1.2;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   font-family: var(--font-primary);
   max-width: 800px;
   margin-left: auto;
@@ -292,7 +292,7 @@
 .ctaCard p {
   font-size: clamp(1rem, 1.35vw, 1.25rem);
   line-height: 1.6;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   font-family: var(--font-primary);
   font-weight: var(--font-weight-light);
   opacity: 0.9;

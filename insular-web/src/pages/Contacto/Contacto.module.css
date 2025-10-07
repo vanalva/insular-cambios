@@ -93,8 +93,56 @@
   background: var(--color-background);
 }
 
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.contactFormContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ctaCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-red-electrica);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.ctaImage {
+  width: 100%;
+  flex: 1.2;
+  min-height: 50%;
+  background: url('/images/temp/confianza.webp') center center / cover no-repeat;
+}
+
+.ctaContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-lg);
+  justify-content: space-between;
+}
+
+.ctaSpacer {
+  flex: 1;
+  min-height: var(--space-sm);
+}
+
 .form {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-sm);
 }
 
 .formGroup {
@@ -300,5 +348,25 @@
   .ctaButtons {
     grid-column: span 1;
     flex-direction: column;
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .contactFormContainer,
+  .ctaContainer {
+    height: auto;
+  }
+
+  .ctaCard {
+    height: auto;
+  }
+
+  .ctaImage {
+    flex: none;
+    height: 200px;
+    min-height: 200px;
   }
 }

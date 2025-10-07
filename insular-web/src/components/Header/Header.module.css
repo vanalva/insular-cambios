@@ -15,15 +15,6 @@
   border-radius: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0);
   z-index: var(--z-sticky);
-  transition:
-    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: background-color, backdrop-filter, border-color, box-shadow, width, transform;
   padding: 0;
 }
 
@@ -39,12 +30,14 @@
 /* Remove default container side padding inside the scrolled header
    so left spacing matches the top/bottom padding (var(--space-xs)). */
 .scrolled :global(.container) {
-  padding: 0 var(--container-padding);
+  padding-left: var(--space-xs);
+  padding-right: calc(var(--space-xs) * 3);
 }
 
-/* Ensure full-width hero pages maintain double padding when scrolled */
+/* Ensure full-width hero pages maintain same padding when scrolled */
 .scrolled.fullWidthHero :global(.container) {
-  padding: 0 var(--container-padding);
+  padding-left: var(--space-xs);
+  padding-right: calc(var(--space-xs) * 3);
 }
 
 /* Full-width hero variant - double the left/right padding only on smaller screens */
@@ -54,10 +47,10 @@
     padding-right: calc(var(--container-padding) * 2);
   }
 
-  /* Scrolled full-width hero navbar gets double padding on small screens */
+  /* Scrolled full-width hero navbar maintains same padding on small screens */
   .scrolled.fullWidthHero :global(.container) {
-    padding-left: calc(var(--container-padding) * 2);
-    padding-right: calc(var(--container-padding) * 2);
+    padding-left: var(--space-xs);
+    padding-right: calc(var(--space-xs) * 3);
   }
 }
 
@@ -71,10 +64,6 @@
   justify-content: space-between;
   padding: var(--space-sm) 0; /* horizontal padding comes from .container to match sections */
   min-height: var(--navbar-height);
-  transition: 
-    min-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrolled .headerContent {
@@ -94,10 +83,6 @@
   width: auto;
   max-width: none;
   display: block;
-  transition: 
-    height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logoImage:hover { transform: none; }
@@ -114,12 +99,9 @@
   font-weight: 500;
   color: var(--color-text-primary);
   text-decoration: none;
-  transition: 
-    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   padding-bottom: 0.25rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navLink::before {
@@ -174,12 +156,7 @@
   border: 0.125rem solid var(--color-red-electrica);
   color: var(--color-red-electrica);
   background: transparent;
-  transition: 
-    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .contactButton:hover {
@@ -383,6 +360,16 @@
   .scrolled {
     width: calc(100% - (var(--container-padding) * 2));
     padding: 0;
+  }
+
+  .scrolled :global(.container) {
+    padding-left: var(--space-xs);
+    padding-right: calc(var(--space-xs) * 3);
+  }
+
+  .scrolled.fullWidthHero :global(.container) {
+    padding-left: var(--space-xs);
+    padding-right: calc(var(--space-xs) * 3);
   }
 
   .scrolled .headerContent {

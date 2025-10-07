@@ -108,8 +108,9 @@ const Contacto = () => {
 
       <Section className={styles.contact}>
         <div className="container">
-          <div className="grid grid-2 gap-xl">
-            <div data-animate="fade-right">
+          <div className={styles.contactGrid}>
+            <div data-animate="fade-right" className={styles.contactFormContainer}>
+              <div className="display">Contáctanos</div>
               <h2 className="h2">Envíanos un mensaje</h2>
               <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.formGroup}>
@@ -159,41 +160,17 @@ const Contacto = () => {
               </form>
             </div>
 
-            <div data-animate="fade-left">
-              <div className={styles.contactInfo}>
-                <h3 className="h3">Información de contacto</h3>
-
-                <div className={styles.infoItem}>
-                  <h4 className="h4">Teléfono</h4>
-                  <p className="body">+1 (555) 123-4567</p>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <h4 className="h4">Email</h4>
-                  <p className="body">info@insularcasadecambio.com</p>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <h4 className="h4">Horario de atención</h4>
-                  <p className="body">Lunes a Viernes: 9:00 AM - 6:00 PM</p>
-                  <p className="body">Sábados: 9:00 AM - 1:00 PM</p>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <h4 className="h4">Oficina principal</h4>
-                  <p className="body">
-                    Av. Principal 123<br />
-                    Ciudad, País 12345
+            <div data-animate="fade-left" className={styles.ctaContainer}>
+              <div className={styles.ctaCard}>
+                <div className={styles.ctaImage}></div>
+                <div className={styles.ctaContent}>
+                  <h2 className="h2 text-white">¿Necesitas ayuda inmediata?</h2>
+                  <p className="body-sm text-white">
+                    Nuestro equipo de soporte está disponible 24/7 para atender tus consultas urgentes.
                   </p>
+                  <div className={styles.ctaSpacer}></div>
+                  <CTAButton text="Chat en vivo" variant="secondary" />
                 </div>
-              </div>
-
-              <div className="card module" style={{ marginTop: 'var(--space-lg)' }}>
-                <h3 className="h3 text-white">¿Necesitas ayuda inmediata?</h3>
-                <p className="body-sm text-white">
-                  Nuestro equipo de soporte está disponible 24/7 para atender tus consultas urgentes.
-                </p>
-                <CTAButton text="Chat en vivo" variant="secondary" />
               </div>
             </div>
           </div>
