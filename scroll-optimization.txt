@@ -1,0 +1,43 @@
+// SCROLL OPTIMIZATION FOR HOME PAGE
+// Add this after line 436 (after the first useEffect closes)
+
+  // Scroll detection for performance optimization
+  useEffect(() => {
+    const handleScroll = () => {
+      isScrollingRef.current = true;
+
+      if (scrollTimeoutRef.current) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+
+      scrollTimeoutRef.current = window.setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
+
+
+// REPLACE line 119 from:
+    ctx.fillStyle = `rgba(${base.r},${base.g},${base.b},0.012)`; // longer trail persistence
+
+// TO:
+    // Faster trail fade when scrolling for performance
+    const trailFade = isScrollingRef.current ? 0.25 : 0.012;
+    ctx.fillStyle = `rgba(${base.r},${base.g},${base.b},${trailFade})`;
+
+
+// REPLACE line 197-198 (in TRAIL_ENABLED section) from:
+      const maxTrail = 24;
+
+// TO:
+      // Reduce trail count during scroll for performance
+      const maxTrail = isScrollingRef.current ? 6 : 24;

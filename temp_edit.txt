@@ -1,0 +1,8 @@
+    // Dissipate previous frame for a smooth trail using body bg color
+    const base = baseColorRef.current || { r: 16, g: 16, b: 33 };
+    // Ensure base clear uses normal composition, preventing gray veil buildup
+    ctx.globalCompositeOperation = 'source-over';
+    // Faster trail fade when scrolling for performance
+    const trailFade = isScrollingRef.current ? 0.08 : 0.012;
+    ctx.fillStyle = `rgba(${base.r},${base.g},${base.b},${trailFade})`;
+    ctx.fillRect(0, 0, width, height);

@@ -83,6 +83,8 @@ const Home = () => {
   const rafRef = useRef<number | null>(null);
   const targetPos = useRef({ x: 0, y: 0 });
   const currentPos = useRef({ x: 0, y: 0 });
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
 
   const animate = (ts?: number) => {
     const canvas = canvasRef.current;
@@ -114,7 +116,9 @@ const Home = () => {
     const base = baseColorRef.current || { r: 16, g: 16, b: 33 };
     // Ensure base clear uses normal composition, preventing gray veil buildup
     ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = `rgba(${base.r},${base.g},${base.b},0.012)`; // longer trail persistence
+    // Faster trail fade when scrolling for performance
+    const trailFade = isScrollingRef.current ? 0.25 : 0.012;
+    ctx.fillStyle = `rgba(${base.r},${base.g},${base.b},${trailFade})`;
     ctx.fillRect(0, 0, width, height);
 
     const x = currentPos.current.x;
@@ -194,7 +198,8 @@ const Home = () => {
 
     // Main brush trail (stamped ellipses along recent motion)
     if (TRAIL_ENABLED) {
-      const maxTrail = 24;
+      // Reduce trail count during scroll for performance
+      const maxTrail = isScrollingRef.current ? 6 : 24;
       const speedNorm = Math.min(1, Math.hypot(vx, vy) / 60);
       const trailColor = c1;
       trailRef.current.push({ x, y, angle, speed: speedNorm, color: trailColor });
@@ -430,6 +435,30 @@ const Home = () => {
       window.removeEventListener('mousemove', onMove);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
+    };
+  }, []);
+
+  // Scroll detection for performance optimization
+  useEffect(() => {
+    const handleScroll = () => {
+      isScrollingRef.current = true;
+
+      if (scrollTimeoutRef.current) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+
+      scrollTimeoutRef.current = window.setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
     };
   }, []);
 

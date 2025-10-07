@@ -28,7 +28,9 @@
       "Bash(pnpm add:*)",
       "Bash(pnpm run:*)",
       "Bash(cat:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(tasklist)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []
