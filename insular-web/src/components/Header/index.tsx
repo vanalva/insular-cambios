@@ -20,6 +20,8 @@ const Header = () => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const headerContentRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   // Initialize opacity on mount
   useEffect(() => {
@@ -36,12 +38,15 @@ const Header = () => {
   // Crossfade navbar on scroll
   useEffect(() => {
     if (!headerContentRef.current || !headerRef.current || !isInitialized) return;
+    if (!logoRef.current || !navRef.current) return;
+
+    const navLinks = navRef.current.querySelectorAll('a');
 
     // Kill any existing animations to prevent getting stuck
-    gsap.killTweensOf([headerContentRef.current, headerRef.current]);
+    gsap.killTweensOf([headerRef.current, headerContentRef.current, logoRef.current, ...Array.from(navLinks)]);
 
-    // Fade out both header container and content
-    gsap.to([headerRef.current, headerContentRef.current], {
+    // Fade out header container and all content as a block
+    gsap.to([headerRef.current, logoRef.current, ...Array.from(navLinks)], {
       opacity: 0,
       duration: 0.25,
       ease: 'power2.out',
@@ -49,13 +54,38 @@ const Header = () => {
         // Update all states while invisible
         setDisplayScrolled(isScrolled);
         setApplyScrolledClass(isScrolled);
-        // Immediately fade back in with no delay
+        // Immediately fade back in with staggered cascade
         requestAnimationFrame(() => {
-          gsap.to([headerRef.current, headerContentRef.current], {
+          // Fade in header container first
+          gsap.to(headerRef.current, {
             opacity: 1,
             duration: 0.25,
             ease: 'power2.in'
           });
+
+          // Animate logo from left
+          gsap.fromTo(logoRef.current,
+            { opacity: 0, x: -20 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.25,
+              ease: 'power2.out'
+            }
+          );
+
+          // Stagger nav links from bottom to top (reverse order)
+          const reversedLinks = Array.from(navLinks).reverse();
+          gsap.fromTo(reversedLinks,
+            { opacity: 0, y: 15 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.25,
+              stagger: 0.05,
+              ease: 'power2.out'
+            }
+          );
         });
       }
     });
@@ -271,11 +301,11 @@ const Header = () => {
       <header ref={headerRef} className={`${styles.header} ${applyScrolledClass ? styles.scrolled : ''} ${hasFullWidthHero ? styles.fullWidthHero : ''}`}>
         <div className="container">
           <div ref={headerContentRef} className={styles.headerContent}>
-            <Link to="/" className={styles.logo} aria-label="Volver al inicio">
+            <Link ref={logoRef} to="/" className={styles.logo} aria-label="Volver al inicio">
               <AnimatedLogo isScrolled={displayScrolled} />
             </Link>
 
-            <nav className={`${styles.nav} ${isMobileOpen ? styles.mobileOpen : ''}`}>
+            <nav ref={navRef} className={`${styles.nav} ${isMobileOpen ? styles.mobileOpen : ''}`}>
               {navigation.map((item) => {
                 const isActive = location.pathname === item.path;
                 const isContacto = item.label.toLowerCase() === 'contacto';
