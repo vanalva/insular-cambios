@@ -508,7 +508,10 @@ const Home = () => {
 
   // Animate exchange rates numbers on load
   useEffect(() => {
+    console.log('Starting rate animations...', { usdRateRef: usdRateRef.current, eurRateRef: eurRateRef.current });
+    
     const animateNumber = (element: HTMLElement, targetValue: number, decimals: number = 4) => {
+      console.log('Animating number for element:', element, 'target:', targetValue);
       const obj = { value: 0 };
       gsap.to(obj, {
         value: targetValue,
@@ -518,16 +521,28 @@ const Home = () => {
         onUpdate: () => {
           element.textContent = `Bs. ${obj.value.toFixed(decimals).replace('.', ',')}`;
         },
+        onComplete: () => {
+          console.log('Animation completed for:', targetValue);
+        }
       });
     };
 
-    if (usdRateRef.current) {
-      animateNumber(usdRateRef.current, 160.4479, 4);
-    }
+    // Add a small delay to ensure refs are ready
+    const timer = setTimeout(() => {
+      if (usdRateRef.current) {
+        animateNumber(usdRateRef.current, 160.4479, 4);
+      } else {
+        console.warn('USD rate ref not found');
+      }
 
-    if (eurRateRef.current) {
-      animateNumber(eurRateRef.current, 188.0289, 4);
-    }
+      if (eurRateRef.current) {
+        animateNumber(eurRateRef.current, 188.0289, 4);
+      } else {
+        console.warn('EUR rate ref not found');
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (

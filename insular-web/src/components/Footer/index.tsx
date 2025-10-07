@@ -47,7 +47,9 @@ const Footer = () => {
         {/* Bottom Row */}
         <div className={styles.footerBottom}>
           <div className={styles.footerBottomLeft}>
-            <Link to="/privacidad">Políticas de Privacidad</Link>
+            <Link to="/legal#cookies">Cookies</Link>
+            <Link to="/legal#privacy">Privacidad (LOPD)</Link>
+            <Link to="/legal#terms">Términos y Condiciones</Link>
           </div>
           <div className={styles.footerBottomRight}>
             <div className={styles.socialLinks}>

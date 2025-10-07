@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { ArrowRight, Zap, Building2, Globe, CreditCard } from 'lucide-react';
 import CTAButton from '../../components/CTAButton';
 import styles from './Servicios.module.css';
 
@@ -12,17 +13,17 @@ const Servicios = () => {
     {
       title: 'Pago móvil',
       description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
-      icon: '→'
+      icon: ArrowRight
     },
     {
       title: 'Crédito inmediato',
       description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
-      icon: '→'
+      icon: ArrowRight
     },
     {
       title: 'Retiro físico',
       description: 'Retiro en nuestra agencia física en Caracas: Avenida Francisco de Miranda, Torre Seguros Sudamerica, local PB-7 Urbanización El Rosal, municipio Chacao.',
-      icon: '→'
+      icon: ArrowRight
     }
   ];
 
@@ -30,22 +31,22 @@ const Servicios = () => {
     {
       title: 'Rapidez y Eficiencia',
       description: 'Nuestras operaciones son rápidas y directas',
-      icon: '⚡'
+      icon: Zap
     },
     {
       title: 'Legalidad y Respaldo',
       description: 'Operamos 100% dentro del marco legal venezolano, garantizando su tranquilidad.',
-      icon: '🏛️'
+      icon: Building2
     },
     {
       title: 'Conexión Global',
       description: 'Gracias a nuestros aliados internacionales, conectamos a Venezuela con el mundo.',
-      icon: '🌐'
+      icon: Globe
     },
     {
       title: 'Comodidad Total',
       description: 'Elija entre opciones digitales (Pago Móvil) o presenciales para sus transacciones.',
-      icon: '💳'
+      icon: CreditCard
     }
   ];
 
@@ -109,13 +110,20 @@ const Servicios = () => {
               <CTAButton text="¡Haz click aquí!" variant="primary" />
             </div>
             <div className={styles.receiveCards}>
-              {receiveOptions.map((option, index) => (
-                <div key={index} className={styles.receiveCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
-                  <div className={styles.receiveCardIcon}>{option.icon}</div>
-                  <h3>{option.title}</h3>
-                  <p>{option.description}</p>
-                </div>
-              ))}
+              {receiveOptions.map((option, index) => {
+                const IconComponent = option.icon;
+                return (
+                  <div key={index} className={styles.receiveCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
+                    <div className={styles.receiveCardContent}>
+                      <div className={styles.receiveCardIcon}>
+                        <IconComponent size={24} strokeWidth={2} />
+                      </div>
+                      <h3>{option.title}</h3>
+                    </div>
+                    <p>{option.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -129,13 +137,18 @@ const Servicios = () => {
             <p>En Insular Casa de Cambio, combinamos seguridad y conveniencia para ofrecerle un servicio de cambio de divisas excepcional.</p>
           </div>
           <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => (
-              <div key={index} className={styles.benefitCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
-                <div className={styles.benefitIcon}>{benefit.icon}</div>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.description}</p>
-              </div>
-            ))}
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div key={index} className={styles.benefitCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
+                  <div className={styles.benefitIcon}>
+                    <IconComponent size={32} strokeWidth={2} />
+                  </div>
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

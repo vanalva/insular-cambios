@@ -16,12 +16,14 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0);
   z-index: var(--z-sticky);
   transition:
-    background-color 0.3s ease,
-    backdrop-filter 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    width 0.3s ease;
-  will-change: background-color, backdrop-filter, border-color, box-shadow;
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: background-color, backdrop-filter, border-color, box-shadow, width, transform;
   padding: 0;
 }
 
@@ -40,15 +42,23 @@
   padding: 0 var(--container-padding);
 }
 
-/* Full-width hero variant - double the left/right padding */
-.fullWidthHero :global(.container) {
-  padding-left: calc(var(--container-padding) * 2);
-  padding-right: calc(var(--container-padding) * 2);
+/* Ensure full-width hero pages maintain double padding when scrolled */
+.scrolled.fullWidthHero :global(.container) {
+  padding: 0 var(--container-padding);
 }
 
-.scrolled.fullWidthHero :global(.container) {
-  padding-left: calc(var(--container-padding) * 2);
-  padding-right: calc(var(--container-padding) * 2);
+/* Full-width hero variant - double the left/right padding only on smaller screens */
+@media (max-width: 1680px) {
+  .fullWidthHero :global(.container) {
+    padding-left: calc(var(--container-padding) * 2);
+    padding-right: calc(var(--container-padding) * 2);
+  }
+
+  /* Scrolled full-width hero navbar gets double padding on small screens */
+  .scrolled.fullWidthHero :global(.container) {
+    padding-left: calc(var(--container-padding) * 2);
+    padding-right: calc(var(--container-padding) * 2);
+  }
 }
 
 .scrolled .logoImage {
@@ -61,7 +71,10 @@
   justify-content: space-between;
   padding: var(--space-sm) 0; /* horizontal padding comes from .container to match sections */
   min-height: var(--navbar-height);
-  transition: min-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 
+    min-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+    padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrolled .headerContent {
@@ -81,7 +94,10 @@
   width: auto;
   max-width: none;
   display: block;
-  transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  transition: 
+    height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logoImage:hover { transform: none; }
@@ -98,7 +114,10 @@
   font-weight: 500;
   color: var(--color-text-primary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: 
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   padding-bottom: 0.25rem;
 }
@@ -155,7 +174,12 @@
   border: 0.125rem solid var(--color-red-electrica);
   color: var(--color-red-electrica);
   background: transparent;
-  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+  transition: 
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contactButton:hover {
@@ -164,7 +188,7 @@
 }
 
 /* Mobile full-width spacing */
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
   .contactButton {
     width: calc(100% - (var(--container-padding) * 2));
     padding: var(--space-sm);
@@ -189,8 +213,169 @@
   transition: all var(--transition-base);
 }
 
+/* Full-page Mobile Menu Overlay */
+.mobileMenuOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(16, 16, 33);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.mobileMenuOverlay.mobileMenuOpen {
+  visibility: visible;
+}
+
+.mobileMenuClose {
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2.5rem);
+  right: clamp(1.5rem, 3vw, 2.5rem);
+  background: transparent;
+  border: 2px solid var(--color-text-primary);
+  border-radius: 50%;
+  width: clamp(3rem, 5vw, 4rem);
+  height: clamp(3rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  will-change: transform, opacity;
+  padding: 0;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+
+.mobileMenuClose:hover {
+  background: var(--color-red-electrica);
+  border-color: var(--color-red-electrica);
+  color: var(--color-white);
+  transform: rotate(90deg);
+}
+
+.mobileMenuGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  height: 100vh;
+  height: 100dvh;
+  gap: 0;
+  overflow: hidden;
+}
+
+.mobileMenuImage {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-red-electrica), var(--color-firma-azul));
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.mobileMenuImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.85;
+}
+
+.mobileMenuNav {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(2rem, 5vw, 4rem);
+  gap: clamp(0.5rem, 2vh, 1.5rem);
+}
+
+.mobileMenuItem {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 4vw + 2vh, 4.5rem);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  line-height: 1;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.mobileMenuItem:hover {
+  color: var(--color-text-primary);
+  transform: translateX(1rem);
+}
+
+.mobileMenuItemActive {
+  color: var(--color-red-electrica);
+}
+
+.mobileMenuFooter {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: clamp(2rem, 4vw, 3rem);
+  gap: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.mobileMenuSocial {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.mobileMenuSocial a {
+  width: clamp(2.5rem, 4vw, 3.5rem);
+  height: clamp(2.5rem, 4vw, 3.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  color: var(--color-text-primary);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileMenuSocial a:hover {
+  background: var(--color-red-electrica);
+  border-color: var(--color-red-electrica);
+  transform: translateY(-4px);
+}
+
+.mobileMenuSocial svg {
+  width: clamp(1.25rem, 2vw, 1.75rem);
+  height: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.mobileMenuLogo {
+  height: clamp(3rem, 5vw, 5rem);
+  width: auto;
+  opacity: 0.9;
+}
+
+/* Hide mobile menu overlay on desktop */
+@media (min-width: 1081px) {
+  .mobileMenuOverlay {
+    display: none;
+  }
+}
+
 /* Mobile styles */
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
   .headerContent {
     min-height: clamp(5rem, 4.5rem + 2.5vw, 6rem);
   }
@@ -217,40 +402,38 @@
   }
 
   .nav {
-    position: fixed;
-    top: 4.375rem;
-    left: 0;
-    right: 0;
-    background: var(--color-background);
-    flex-direction: column;
-    padding: var(--space-lg);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    border-radius: var(--space-md);
-    margin: var(--space-sm);
-  }
-
-  .scrolled ~ .nav {
-    top: 5.625rem;
-  }
-
-  .nav.mobileOpen {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .navLink {
-    width: calc(100% - (var(--container-padding) * 2));
-    padding: var(--space-sm) 0;
-    text-align: center;
-    color: var(--color-text-primary);
-  }
-
-  .navLink.active::after {
     display: none;
+  }
+}
+
+/* Tablet and smaller - single column layout */
+@media (max-width: 768px) {
+  .mobileMenuGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 40vh 1fr auto;
+  }
+
+  .mobileMenuImage {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .mobileMenuNav {
+    grid-column: 1;
+    grid-row: 2;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .mobileMenuItem {
+    font-size: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .mobileMenuFooter {
+    grid-column: 1;
+    grid-row: 3;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 2rem);
   }
 }

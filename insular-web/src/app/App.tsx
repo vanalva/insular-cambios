@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Router from '../router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import DomainVerificationModal from '../components/DomainVerificationModal';
 import { initAnimations, initParallax, cleanupAnimations } from '../utils/animations';
 import '../styles/globals.css';
 
@@ -32,6 +33,7 @@ const AppContent = () => {
         <Router />
       </main>
       <Footer />
+      <DomainVerificationModal />
     </div>
   );
 };

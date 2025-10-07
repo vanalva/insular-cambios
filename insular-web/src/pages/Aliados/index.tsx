@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Globe, DollarSign, Zap, Lock } from 'lucide-react';
 import Section from '../../components/Section';
-import Carousel from '../../components/Carousel';
+import CTAButton from '../../components/CTAButton';
 import styles from './Aliados.module.css';
 
 const Aliados = () => {
@@ -10,48 +11,105 @@ const Aliados = () => {
   }, []);
 
   const partners = [
-    { name: 'B9', logo: '/images/partners/b9.png', description: 'Plataforma de pagos digitales' },
-    { name: 'Papaya', logo: '/images/partners/papaya.png', description: 'Soluciones financieras' },
-    { name: 'Western Union', logo: '/images/partners/wu.png', description: 'Transferencias globales' },
-    { name: 'MoneyGram', logo: '/images/partners/mg.png', description: 'Remesas internacionales' },
-    { name: 'Visa', logo: '/images/partners/visa.png', description: 'Procesamiento de pagos' },
-    { name: 'Mastercard', logo: '/images/partners/mc.png', description: 'Soluciones de pago' }
+    { 
+      name: 'MoneyGram', 
+      logo: '/logos/partners/moneygram-collab-logo.svg', 
+      description: 'Remesas internacionales con cobertura global',
+      category: 'Remesas'
+    },
+    { 
+      name: 'Ria', 
+      logo: '/logos/partners/ria-collab-logo.svg', 
+      description: 'Transferencias rápidas y seguras',
+      category: 'Remesas'
+    },
+    { 
+      name: 'Remitly', 
+      logo: '/logos/partners/remitly-collab-logo.svg', 
+      description: 'Plataforma digital de envíos',
+      category: 'Remesas'
+    },
+    { 
+      name: 'Papaya', 
+      logo: '/logos/partners/papaya-collab-logo.svg', 
+      description: 'Soluciones financieras innovadoras',
+      category: 'Fintech'
+    }
+  ];
+
+  const benefits = [
+    {
+      icon: Globe,
+      title: 'Cobertura Global',
+      description: 'Conectamos con más de 200 países a través de nuestra red de aliados internacionales de confianza.'
+    },
+    {
+      icon: DollarSign,
+      title: 'Mejores Tarifas',
+      description: 'Negociamos las mejores tasas de cambio gracias a nuestro volumen de operaciones y relaciones estratégicas.'
+    },
+    {
+      icon: Zap,
+      title: 'Velocidad',
+      description: 'Transferencias instantáneas y procesamiento rápido para que recibas tu dinero cuando lo necesites.'
+    },
+    {
+      icon: Lock,
+      title: 'Seguridad',
+      description: 'Todas nuestras operaciones están respaldadas por los más altos estándares de seguridad y cumplimiento.'
+    }
   ];
 
   return (
     <>
       <Helmet>
         <title>Aliados - Insular Casa de Cambio</title>
-        <meta name="description" content="Conoce a nuestros aliados estratégicos que nos ayudan a brindarte el mejor servicio de cambio de divisas." />
+        <meta name="description" content="Conoce a nuestros aliados estratégicos que nos ayudan a brindarte el mejor servicio de cambio de divisas y transferencias internacionales." />
       </Helmet>
 
-      <Section className={styles.hero}>
-        <div className="container">
-          <h1 className="h1" data-animate="fade-up">Nuestros aliados</h1>
-          <p className="body" data-animate="fade-up" data-delay="0.2">
-            Trabajamos con los mejores para ofrecerte el mejor servicio
-          </p>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroBackground}>
+          <img src="/images/sections/mundo.webp" alt="" />
         </div>
-      </Section>
-
-      <Section className={styles.partnersGrid}>
         <div className="container">
-          <h2 className="h2 text-center" data-animate="fade-up">Aliados estratégicos</h2>
-          <div className="grid grid-3">
+          <div className={styles.heroContent}>
+            <div className={styles.heroText} data-animate="fade-up">
+              <h1>Conoce a nuestros aliados estratégicos</h1>
+              <p>Trabajamos de la mano con reconocidos aliados internacionales para asegurar que cada remesa llegue de forma rápida, legal y segura a su destino.</p>
+              <div className={styles.heroActions}>
+                <CTAButton text="¡Conoce más!" variant="primary" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Showcase Section */}
+      <Section className={styles.partnersSection}>
+        <div className="container">
+          <div className={styles.partnersHeader}>
+            <h2 data-animate="fade-up">Aliados Estratégicos</h2>
+            <p data-animate="fade-up" data-delay="0.1">
+              Colaboramos con las mejores empresas del sector para ofrecerte servicios de clase mundial
+            </p>
+          </div>
+          
+          <div className={styles.partnersGrid}>
             {partners.map((partner, index) => (
               <div
                 key={index}
-                className="card card-light module"
+                className={styles.partnerCard}
                 data-animate="fade-up"
                 data-delay={`${0.1 * (index + 1)}`}
               >
-                <div className={styles.partnerCard}>
-                  <div className={styles.partnerLogo}>
-                    {/* Placeholder for logo */}
-                    <div className={styles.logoPlaceholder}>{partner.name}</div>
-                  </div>
-                  <h3 className="h4">{partner.name}</h3>
-                  <p className="body-sm">{partner.description}</p>
+                <div className={styles.partnerLogo}>
+                  <img src={partner.logo} alt={partner.name} />
+                </div>
+                <div className={styles.partnerInfo}>
+                  <span className={styles.partnerCategory}>{partner.category}</span>
+                  <h3>{partner.name}</h3>
+                  <p>{partner.description}</p>
                 </div>
               </div>
             ))}
@@ -59,35 +117,47 @@ const Aliados = () => {
         </div>
       </Section>
 
-      <Section className={styles.carousel}>
+      {/* Benefits Section */}
+      <Section className={styles.benefitsSection}>
         <div className="container">
-          <h2 className="h2 text-center" data-animate="fade-up">Red de colaboradores</h2>
-          <Carousel />
+          <div className={styles.benefitsHeader}>
+            <h2 data-animate="fade-up">Beneficios de Nuestra Red</h2>
+            <p data-animate="fade-up" data-delay="0.1">
+              Al trabajar con aliados de primer nivel, podemos ofrecerte ventajas únicas
+            </p>
+          </div>
+          
+          <div className={styles.benefitsGrid}>
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div
+                  key={index}
+                  className={styles.benefitCard}
+                  data-animate="fade-up"
+                  data-delay={`${0.1 * (index + 1)}`}
+                >
+                  <div className={styles.benefitIcon}>
+                    <IconComponent size={32} strokeWidth={2} />
+                  </div>
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.description}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Section>
 
-      <Section className={styles.benefits}>
+      {/* CTA Section */}
+      <Section className={styles.ctaSection}>
         <div className="container">
-          <h2 className="h2 text-center" data-animate="fade-up">Beneficios de nuestra red</h2>
-          <div className="grid grid-3">
-            <div className="text-center" data-animate="fade-up" data-delay="0.1">
-              <h3 className="h3">Cobertura global</h3>
-              <p className="body-sm">
-                Acceso a más de 200 países a través de nuestra red de aliados
-              </p>
-            </div>
-            <div className="text-center" data-animate="fade-up" data-delay="0.2">
-              <h3 className="h3">Mejores tarifas</h3>
-              <p className="body-sm">
-                Negociamos las mejores tasas gracias a nuestro volumen de operaciones
-              </p>
-            </div>
-            <div className="text-center" data-animate="fade-up" data-delay="0.3">
-              <h3 className="h3">Tecnología avanzada</h3>
-              <p className="body-sm">
-                Integraciones con las plataformas más modernas del mercado
-              </p>
-            </div>
+          <div className={styles.ctaCard} data-animate="fade-up">
+            <h2>¿Listo para empezar?</h2>
+            <p>
+              Únete a miles de personas que ya confían en nosotros para sus transferencias internacionales.
+            </p>
+            <CTAButton text="¡Empieza ahora!" />
           </div>
         </div>
       </Section>

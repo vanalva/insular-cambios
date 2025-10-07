@@ -286,5 +286,11 @@ export const initCarousel = (element: HTMLElement) => {
 // Clean up ScrollTrigger on unmount
 export const cleanupAnimations = () => {
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  gsap.killTweensOf('*');
+  // Kill all tweens except those in elements with data-preserve-animation attribute
+  const allElements = document.querySelectorAll('*');
+  allElements.forEach((el) => {
+    if (!el.hasAttribute('data-preserve-animation') && !el.closest('[data-preserve-animation]')) {
+      gsap.killTweensOf(el);
+    }
+  });
 };

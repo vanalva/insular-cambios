@@ -2,7 +2,7 @@
 
 /* ===== HERO SECTION ===== */
 .hero {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   background: var(--color-background);
@@ -11,6 +11,7 @@
   padding-bottom: var(--container-padding);
   padding-left: var(--container-padding);
   position: relative;
+  overflow: hidden;
 }
 
 .heroBackground {
@@ -46,28 +47,30 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  
-  
-  padding: var(--space-3xl) 0;
+  padding: var(--space-3xl) var(--container-padding);
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .heroText {
-  max-width: 50%;
+  max-width: 65%;
 }
 
 .heroText h1 {
-  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-size: clamp(2.5rem, 6vw, 6rem);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.05;
   color: var(--color-text-primary);
   margin-bottom: var(--space-lg);
   font-family: var(--font-primary);
+  letter-spacing: -0.01em;
 }
 
 .heroText p {
-  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: var(--space-xl);
   font-family: var(--font-primary);
   font-weight: var(--font-weight-light);
@@ -193,16 +196,20 @@
   min-height: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .receiveCard:hover {
   transform: translateY(-4px);
 }
 
+.receiveCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
 .receiveCardIcon {
-  position: absolute;
-  top: clamp(1.5rem, 3vw, 2.5rem);
-  right: clamp(1.5rem, 3vw, 2.5rem);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -212,13 +219,14 @@
   justify-content: center;
   font-size: 1.5rem;
   color: var(--color-white);
+  align-self: flex-start;
 }
 
 .receiveCard h3 {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 500;
   color: var(--color-white);
-  margin-bottom: var(--space-md);
+  margin: 0;
   font-family: var(--font-primary);
 }
 
@@ -228,6 +236,7 @@
   line-height: 1.5;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-light);
+  margin: 0;
 }
 
 /* ===== BENEFITS SECTION ===== */
@@ -323,7 +332,24 @@
   }
 
   .receiveCards {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: var(--space-md);
+    justify-items: center;
+  }
+  
+  /* First two cards on top row */
+  .receiveCards .receiveCard:nth-child(1),
+  .receiveCards .receiveCard:nth-child(2) {
+    width: 100%;
+  }
+  
+  /* Third card centered on second row */
+  .receiveCards .receiveCard:nth-child(3) {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: calc(50% + var(--space-md) / 2);
   }
 
   .benefitsHeader p {
@@ -332,5 +358,18 @@
 
   .benefitsGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Extra small screens - single column */
+@media (max-width: 480px) {
+  .receiveCards {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .receiveCards .receiveCard:nth-child(3) {
+    grid-column: 1;
+    max-width: 100%;
   }
 }

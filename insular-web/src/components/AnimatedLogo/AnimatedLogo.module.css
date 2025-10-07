@@ -1,0 +1,19 @@
+.animatedLogo {
+  height: 100%;
+  width: 100%;
+  display: block;
+  max-width: 200px;
+}
+
+.animatedLogo path {
+  vector-effect: non-scaling-stroke;
+  will-change: stroke-dashoffset, fill, stroke;
+  fill: none;
+  stroke: #e7e9e4;
+}
+
+.logoImage {
+  height: 100%;
+  width: auto;
+  display: block;
+}
