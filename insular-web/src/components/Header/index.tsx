@@ -6,6 +6,9 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
+  
+  // Check if current page has full-width hero that needs double padding
+  const hasFullWidthHero = location.pathname === '/contacto' || location.pathname === '/servicios';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +28,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${hasFullWidthHero ? styles.fullWidthHero : ''}`}>
       <div className="container">
         <div className={styles.headerContent}>
           <Link to="/" className={styles.logo} aria-label="Volver al inicio">

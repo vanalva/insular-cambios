@@ -548,6 +548,7 @@ const Home = () => {
       >
         <div className={styles.fluidContainer} aria-hidden="true">
           <canvas ref={canvasRef} className={styles.fluidCanvas} />
+          <div className={styles.grainOverlay} />
           <div className={styles.fluidNoise} />
         </div>
         <div className="container">

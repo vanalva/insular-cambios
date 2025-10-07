@@ -37,72 +37,11 @@ const Contacto = () => {
       </Helmet>
 
       <Section className={styles.hero}>
-        <div className={styles.heroBackground}></div>
         <div className="container">
-          <div className={styles.heroContent}>
-            <div className={styles.heroLeft}>
-              <h1 className={styles.heroTitle}>
-                ¡Estamos<br />
-                aquí para<br />
-                ayudarte!
-              </h1>
-            </div>
-
-            <div className={styles.heroRight}>
-              <div className={styles.infoCard}>
-                <span className={styles.cardLabel}>Número de contacto</span>
-                <a href="tel:+582129531996" className={styles.cardValue}>(+58) 0212 953 1996</a>
-                <div className={styles.cardIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div className={styles.infoCard}>
-                <span className={styles.cardLabel}>Correo Electrónico</span>
-                <a href="mailto:operaciones@cambiosinsular.com" className={styles.cardValue}>operaciones@cambiosinsular.com</a>
-                <div className={styles.cardIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div className={styles.infoCard}>
-                <span className={styles.cardLabel}>Horarios</span>
-                <div className={styles.cardValue}>
-                  <p>Lunes a viernes<br />9:00 am a 4:00 pm</p>
-                  <p style={{ marginTop: 'var(--space-xs)' }}>Sábados y Domingos<br />Cerrados</p>
-                </div>
-                <div className={styles.cardIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div className={styles.infoCard}>
-                <span className={styles.cardLabel}>Dirección</span>
-                <p className={styles.cardValue}>
-                  Avenida Francisco de Miranda,<br />
-                  Torre Seguros Sudamerica,<br />
-                  local PB-7 Urbanización El<br />
-                  Rosal, municipio Chacao.
-                </p>
-                <div className={styles.cardIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </div>
-
-              <div className={styles.ctaButtons}>
-                <CTAButton text="Contáctanos" />
-                <CTAButton text="Chat con Insa" variant="inherit" />
-              </div>
-            </div>
-          </div>
+          <h1 className="h1" data-animate="fade-up">Contáctanos</h1>
+          <p className="body" data-animate="fade-up" data-delay="0.2">
+            Estamos aquí para ayudarte con todas tus necesidades de cambio de divisas
+          </p>
         </div>
       </Section>
 

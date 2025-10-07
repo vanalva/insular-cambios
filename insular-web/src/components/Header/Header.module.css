@@ -40,6 +40,17 @@
   padding: 0 var(--container-padding);
 }
 
+/* Full-width hero variant - double the left/right padding */
+.fullWidthHero :global(.container) {
+  padding-left: calc(var(--container-padding) * 2);
+  padding-right: calc(var(--container-padding) * 2);
+}
+
+.scrolled.fullWidthHero :global(.container) {
+  padding-left: calc(var(--container-padding) * 2);
+  padding-right: calc(var(--container-padding) * 2);
+}
+
 .scrolled .logoImage {
   height: clamp(3.125rem, 2.875rem + 1.25vw, 3.75rem); /* Slightly smaller when scrolled */
 }

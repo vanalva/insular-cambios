@@ -29,11 +29,24 @@
   opacity: 0.6; /* ensure paint reads clearly over base */
 }
 
-.fluidNoise {
+.grainOverlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 1;
+  background-image: url('/images/temp/grain.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+}
+
+.fluidNoise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
   opacity: 0.18;
   mix-blend-mode: color-burn;
   background-image: url("data:image/svg+xml;utf8,\
