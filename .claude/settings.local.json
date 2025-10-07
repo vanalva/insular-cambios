@@ -23,7 +23,12 @@
       "Bash(do sed -i \"s/import { Helmet } from ''react-helmet-async'';/\\/\\/ import { Helmet } from ''react-helmet-async'';/g\" \"$file\")",
       "Bash(done)",
       "Bash(do sed -i 's/<Helmet>/{\\/\\* <Helmet>/g; s/<\\/Helmet>/<\\/Helmet> \\*\\/}/g' \"$file\")",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(taskkill:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm run:*)",
+      "Bash(cat:*)",
+      "Bash(powershell:*)"
     ],
     "deny": [],
     "ask": []

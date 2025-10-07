@@ -1,0 +1,114 @@
+
+# Lumos Utility Classes (All Classes View)
+
+This document summarizes the **Lumos Framework** utility classes listed in the Notion database of "Classes".  The table in Notion contains three columns — **Class Name**, **Aa Name** (a simplified alias) and **Type** — and groups classes into categories such as **Color**, **Typography**, **Element**, **Flexbox**, **Grid**, **Spacing**, **Sizing**, **Visibility** and **Miscellaneous**.  Each class name uses braces `{…}` to indicate variable values (e.g. `u-theme-{inherit‑light‑dark‑brand}` means separate classes `u‑theme‑inherit`, `u‑theme‑light`, `u‑theme‑dark` and `u‑theme‑brand`).
+
+The list below recreates the classes from the public Notion database.  Where a class has many variants it is written using the brace shorthand exactly as shown in the database.  When a class belongs to multiple categories (e.g. both **Flexbox** and **Grid**) the main category is used and additional categories are noted in parentheses.  This list is derived from the Notion page and may omit extremely minor variants that follow the same naming pattern.
+
+## Color
+* **u‑theme‑{inherit‑light‑dark‑brand}** – sets a global theme or brand color.
+* **u‑heading‑accent** – color modifier for headings.
+
+## Typography
+* **u‑text‑style‑{display‑h1‑h2‑h3‑h4‑h5‑h6‑large‑main‑small}** – pre‑defined text style classes for headings and paragraphs.
+* **u‑rich‑text** – styles rich‑text elements.
+* **u‑line‑height‑{small‑medium‑large‑huge}** – sets line height scale.
+* **u‑letter‑spacing‑{tight‑normal}** – adjusts letter spacing.
+* **u‑sr‑only** – screen‑reader‑only text (visually hidden).
+* **u‑line‑clamp‑{1‑2‑3‑4}** – clamps text after a set number of lines.
+* **u‑child‑contain** – prevents children from overflowing their container.
+* **u‑weight‑{regular‑medium‑bold}** – defines font weight variations.
+* **u‑text‑trim‑off** – disables automatic line‑height trimming.
+* **u‑alignment‑{start‑center‑end}** – global alignment variable for flex children and text alignment.
+* **u‑text‑transform‑{none‑uppercase‑capitalize‑lowercase}** – sets text case.
+* **u‑text‑wrap‑{default‑balance‑pretty}** – controls CSS text‑wrap behavior.
+
+## Element
+* **u‑section** – wrapper for page sections.
+* **u‑container‑{small‑full}** – responsive container widths.
+* **u‑svg** – SVG wrapper.
+* **u‑path** – path wrapper for icons or shapes.
+* **u‑section‑spacer** – adds vertical spacing between sections.
+* **u‑content‑wrapper** – wrapper for grouping content elements.
+* **u‑button‑group** – groups multiple buttons together.
+* **u‑embed‑{css‑js}** – utility for embedding custom CSS or JS into a page.
+* **u‑cover** / **u‑cover‑absolute** – cover images (relative vs absolute positioning).
+
+## Flexbox
+These classes help align and control flexbox layouts.
+
+* **u‑flex‑horizontal‑{wrap‑nowrap}** – horizontal flex container that optionally wraps or not.
+* **u‑flex‑vertical‑{wrap‑nowrap}** – vertical flex container with wrap control.
+* **u‑flex‑grow** – makes a flex item grow to fill available space.
+* **u‑flex‑shrink** – makes a flex item shrink.
+* **u‑flex‑noshrink** – prevents shrinking.
+* **u‑align‑self‑{variable‑start‑center‑end‑stretch}** – aligns a single flex/grid child relative to others (variable version ties into alignment modes).
+* **u‑align‑items‑{variable‑start‑center‑end‑stretch}** – aligns flex items vertically.
+* **u‑justify‑content‑{variable‑start‑center‑end‑between‑around}** – aligns items horizontally inside a vertical flex container.
+* **u‑order‑first** / **u‑order‑last** – moves an item to the beginning or end of the flex/grid order.
+* **u‑order‑unset‑{above‑below}** – resets the order at different breakpoints (Grid category but affects flex ordering).
+
+## Grid
+These utilities control CSS grid layouts.
+
+* **u‑grid‑custom** – defines a custom grid with your own column count.
+* **u‑grid‑subgrid** – enables CSS subgrid support.
+* **u‑grid‑{autofit‑autofill}** – responsive grid that automatically fits or fills content.
+* **u‑grid‑{above‑below}** – 12‑column grid that switches to vertical flexbox above or below a breakpoint.
+* **u‑grid‑breakout** – grid that adds extra columns at the edges to allow content to break out to the full screen width.
+* **u‑all‑unset‑{above‑below}** – resets all utility classes above or below a breakpoint.
+* **u‑threshold‑{large‑medium‑small}** – sets container query thresholds for responsive grids.
+* **u‑column‑{full‑indent‑1‑2‑3‑4‑5‑6‑7‑8‑9‑10‑11‑12}** – pre‑made column utilities; `full` spans all columns, `indent` indents content by one column, and `1–12` spans a specific number of columns.
+* **u‑column‑start‑{auto‑1‑2‑3‑4‑5‑6‑7‑8‑9‑10‑11‑12}** – sets the starting column for an element.
+* **u‑row‑start‑{auto‑1‑2‑3‑4‑5‑6}** – sets the starting row.
+* **u‑row‑span‑{1‑2‑3‑4‑5‑6}** – spans a specific number of rows.
+
+## Spacing
+Spacing utilities adjust margins, padding and gaps.  Many of these classes use variables defined in the design system (e.g. *sitemargin*, *gutter*, *text*, *small*, *main* and *large*).  Use the variable prefixes to match the global spacing settings in your project.
+
+* **u‑gap‑inline‑{gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8}** – sets horizontal gap on grid/flex containers.
+* **u‑gap‑row‑{inherit‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8}** – sets vertical gap on grid/flex containers.
+* **u‑margin‑trim** / **u‑ignore‑trim** – toggles line height trimming on text elements.
+* **u‑margin‑top‑{gutter‑text‑auto‑0‑1‑2‑3‑4‑5‑6‑7‑8}** – top margin utilities.
+* **u‑margin‑bottom‑{gutter‑text‑auto‑0‑1‑2‑3‑4‑5‑6‑7‑8}** – bottom margin utilities.
+* **u‑margin‑inline‑auto** – auto horizontal margins (centers an element).
+* **u‑padding‑{sitemargin‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8‑small‑main‑large}** – generic padding utilities for all sides.
+* **u‑padding‑block‑{sitemargin‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8‑small‑main‑large}** – vertical padding utilities (block direction).
+* **u‑padding‑inline‑{sitemargin‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8}** – horizontal padding utilities.
+* **u‑padding‑top‑{sitemargin‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8‑small‑main‑large}** – top padding.
+* **u‑padding‑bottom‑{sitemargin‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8‑small‑main‑large}** – bottom padding.
+* **u‑padding‑left‑{sitemargin‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8}** – left padding.
+* **u‑padding‑right‑{sitemargin‑gutter‑0‑1‑2‑3‑4‑5‑6‑7‑8}** – right padding.
+
+## Sizing
+Sizing utilities define width, height, radius and ratios.
+
+* **u‑min‑height‑screen** – minimum height equal to the viewport height.
+* **u‑max‑width‑{none‑10ch‑12ch‑14ch‑16ch‑18ch‑20ch‑30ch‑40…}** – limits the maximum width of text or elements to a number of character units.
+* **u‑radius‑{none‑inherit‑small‑main‑round}** – border radius utilities.
+* **u‑height‑full** – 100% height.
+* **u‑width‑full** – 100% width.
+* **u‑object‑fit‑{cover‑contain}** – sets `object-fit` on media elements.
+* **u‑ratio‑{1‑1—16‑9—3‑1—2‑3—2‑1—5‑4—4‑5}** – aspect ratio utilities for embedded content.
+
+## Visibility
+Visibility utilities control overflow, z‑index and positioning.
+
+* **u‑overflow‑visible** – default overflow behaviour (shows overflow).
+* **u‑overflow‑hidden** – hides overflowing content.
+* **u‑overflow‑clip** – clips overflowing content without scrollbars.
+* **u‑overflow‑x‑auto** – makes horizontal overflow scrollable.
+* **u‑overflow‑y‑auto** – makes vertical overflow scrollable.
+* **u‑position‑{static‑relative‑absolute‑sticky‑fixed}** – sets element positioning.
+* **u‑zindex‑{negative‑unset‑0‑1‑2‑3}** – z‑index utilities for stacking contexts.
+
+## Miscellaneous
+* **u‑pointer‑{on‑off}** – turns pointer events on or off.
+
+---
+
+**Notes:**
+
+1. Each class is applied on top of a custom class (as described in the Lumos documentation).  Utility classes should be stacked above custom classes and below component classes for predictable CSS specificity.
+2. Many utilities accept **mode variations**.  For example, `u‑grid‑{above‑below}` creates a 12‑column grid above the breakpoint and switches to a vertical flexbox below the breakpoint.
+3. The Notion table used to compile this list is still subject to updates.  For the most up‑to‑date list of classes, refer to the public Notion page or Lumos documentation.

@@ -19,12 +19,14 @@
     background-color 0.3s ease,
     backdrop-filter 0.3s ease,
     border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    width 0.3s ease;
   will-change: background-color, backdrop-filter, border-color, box-shadow;
   padding: 0;
 }
 
 .scrolled {
+  width: calc(100% - (var(--container-padding) * 2));
   background: rgba(16, 16, 33, 0.85);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -39,7 +41,7 @@
 }
 
 .scrolled .logoImage {
-  height: 50px; /* Slightly smaller when scrolled */
+  height: clamp(3.125rem, 2.875rem + 1.25vw, 3.75rem); /* Slightly smaller when scrolled */
 }
 
 .headerContent {
@@ -47,12 +49,12 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-sm) 0; /* horizontal padding comes from .container to match sections */
-  min-height: 96px;
+  min-height: var(--navbar-height);
   transition: min-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrolled .headerContent {
-  min-height: 70px;
+  min-height: clamp(4.375rem, 4rem + 1.875vw, 5rem);
   padding: var(--space-xs) 0; /* rely on container padding for horizontal spacing to prevent shift */
 }
 
@@ -64,7 +66,7 @@
 }
 
 .logoImage {
-  height: 60px;
+  height: clamp(3.75rem, 3.438rem + 1.563vw, 4.5rem);
   width: auto;
   max-width: none;
   display: block;
@@ -87,7 +89,7 @@
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
-  padding-bottom: 4px;
+  padding-bottom: 0.25rem;
 }
 
 .navLink::before {
@@ -96,7 +98,7 @@
   bottom: 0;
   left: 50%;
   right: 50%;
-  height: 2px;
+  height: 0.125rem;
   background: var(--color-red-electrica);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
@@ -123,7 +125,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 0.125rem;
   background: var(--color-accent);
 }
 
@@ -136,10 +138,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 8px 14px;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
   border-radius: var(--radius-button);
-  border: 2px solid var(--color-red-electrica);
+  border: 0.125rem solid var(--color-red-electrica);
   color: var(--color-red-electrica);
   background: transparent;
   transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
@@ -153,7 +155,7 @@
 /* Mobile full-width spacing */
 @media (max-width: 768px) {
   .contactButton {
-    width: 100%;
+    width: calc(100% - (var(--container-padding) * 2));
     padding: var(--space-sm);
   }
 }
@@ -161,17 +163,17 @@
 .mobileToggle {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 0.25rem;
 }
 
 .mobileToggle span {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 1.5rem;
+  height: 0.125rem;
   background: var(--color-white);
   transition: all var(--transition-base);
 }
@@ -179,24 +181,24 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .headerContent {
-    min-height: 80px;
+    min-height: clamp(5rem, 4.5rem + 2.5vw, 6rem);
   }
 
   .scrolled {
-    width: 100%;
+    width: calc(100% - (var(--container-padding) * 2));
     padding: 0;
   }
 
   .scrolled .headerContent {
-    min-height: 60px;
+    min-height: clamp(3.75rem, 3.438rem + 1.563vw, 4.5rem);
   }
 
   .logoImage {
-    height: 56px;
+    height: clamp(3.5rem, 3.188rem + 1.563vw, 4.25rem);
   }
 
   .scrolled .logoImage {
-    height: 40px;
+    height: clamp(2.5rem, 2.25rem + 1.25vw, 3rem);
   }
 
   .mobileToggle {
@@ -205,7 +207,7 @@
 
   .nav {
     position: fixed;
-    top: 70px;
+    top: 4.375rem;
     left: 0;
     right: 0;
     background: var(--color-background);
@@ -221,7 +223,7 @@
   }
 
   .scrolled ~ .nav {
-    top: 90px;
+    top: 5.625rem;
   }
 
   .nav.mobileOpen {
@@ -231,7 +233,7 @@
   }
 
   .navLink {
-    width: 100%;
+    width: calc(100% - (var(--container-padding) * 2));
     padding: var(--space-sm) 0;
     text-align: center;
     color: var(--color-text-primary);

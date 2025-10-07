@@ -6,7 +6,10 @@
   display: flex;
   align-items: center;
   background: var(--color-background);
-  padding: var(--container-padding) 0;
+  padding-top: calc(var(--navbar-offset) + var(--container-padding));
+  padding-right: var(--container-padding);
+  padding-bottom: var(--container-padding);
+  padding-left: var(--container-padding);
   position: relative;
 }
 
@@ -15,6 +18,8 @@
   inset: var(--container-padding);
   z-index: 0;
   border-radius: 24px 0 24px 0;
+  
+  border: var(--border-width-thin) solid var(--color-border-grey);
   overflow: hidden;
 }
 
@@ -41,6 +46,8 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  
+  
   padding: var(--space-3xl) 0;
 }
 
@@ -307,6 +314,8 @@
 
   .heroContent {
     max-width: 100%;
+  
+  
   }
 
   .receiveGrid {

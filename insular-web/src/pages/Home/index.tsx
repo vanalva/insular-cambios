@@ -628,7 +628,7 @@ const Home = () => {
         <div className="container">
           <div className={styles.globalContent}>
             <div className={styles.globeCard} data-animate="fade-right">
-              <img src="/images/sections/mundo.webp" alt="Presencia global" className={styles.globeImage} />
+              <spline-viewer url="https://prod.spline.design/xF9sYjSjbot07mJD/scene.splinecode"></spline-viewer>
             </div>
             <div className={styles.globalCard} data-animate="fade-left">
               <p className={styles.globalIntro}>Presentes en más de</p>
