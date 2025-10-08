@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Search, Shield, Zap, Handshake } from 'lucide-react';
 import Section from '../../components/Section';
 import CTAButton from '../../components/CTAButton';
 import styles from './Conocenos.module.css';
@@ -10,28 +9,7 @@ const Conocenos = () => {
     // ScrollTrigger animations will be added here
   }, []);
 
-  const values = [
-    {
-      icon: Search,
-      title: 'Transparencia',
-      description: 'Operamos con total transparencia, sin comisiones ocultas ni sorpresas desagradables.'
-    },
-    {
-      icon: Shield,
-      title: 'Seguridad',
-      description: 'Implementamos los más altos estándares de seguridad para proteger tus operaciones.'
-    },
-    {
-      icon: Zap,
-      title: 'Rapidez',
-      description: 'Procesamos tus transacciones de manera eficiente para que recibas tu dinero rápidamente.'
-    },
-    {
-      icon: Handshake,
-      title: 'Confianza',
-      description: 'Más de 20 años de experiencia nos respaldan como líderes en el mercado cambiario.'
-    }
-  ];
+  const values = ['Profesionalismo', 'Transparencia', 'Responsabilidad'];
 
   const milestones = [
     { year: '2003', title: 'Fundación', description: 'Nacimos con la visión de revolucionar el mercado cambiario venezolano' },
@@ -65,54 +43,30 @@ const Conocenos = () => {
         </div>
       </section>
 
-      {/* Story Section */}
-      <Section className={styles.storySection}>
+      {/* Mission & Vision Section */}
+      <section className={styles.missionVisionSection}>
         <div className="container">
-          <div className={styles.storyHeader}>
-            <h2 data-animate="fade-up">Nuestra Historia</h2>
-            <p data-animate="fade-up" data-delay="0.1">
-              Desde 2003, hemos sido pioneros en ofrecer servicios de cambio de divisas con transparencia, 
-              seguridad y las mejores tasas del mercado venezolano.
-            </p>
-          </div>
-          
-          <div className={styles.storyGrid}>
-            <div className={styles.storyContent} data-animate="fade-right">
-              <h3>Construyendo el futuro del cambio de divisas</h3>
+          <div className={styles.missionVisionGrid}>
+            <div className={styles.missionCard} data-animate="fade-up">
+              <h2>Misión</h2>
               <p>
-                Insular Casa de Cambio nació con la visión de revolucionar el mercado cambiario venezolano. 
-                Desde nuestros inicios, hemos mantenido un compromiso inquebrantable con la transparencia, 
-                la seguridad y la excelencia en el servicio.
-              </p>
-              <p>
-                A lo largo de más de dos décadas, hemos evolucionado constantemente, adaptándonos a las 
-                necesidades cambiantes del mercado y nuestros clientes. Hoy, somos reconocidos como líderes 
-                en el sector, gracias a nuestra innovación tecnológica y nuestro enfoque centrado en el cliente.
+                Proporcionar servicios de cambio de divisas y transferencias internacionales seguros,
+                transparentes y convenientes, superando las expectativas de nuestros clientes y
+                contribuyendo al desarrollo económico del país.
               </p>
             </div>
-            
-            <div className={styles.missionVision} data-animate="fade-left">
-              <div className={styles.missionCard}>
-                <h4>Nuestra Misión</h4>
-                <p>
-                  Proporcionar servicios de cambio de divisas y transferencias internacionales seguros, 
-                  transparentes y convenientes, superando las expectativas de nuestros clientes y 
-                  contribuyendo al desarrollo económico del país.
-                </p>
-              </div>
-              
-              <div className={styles.visionCard}>
-                <h4>Nuestra Visión</h4>
-                <p>
-                  Ser la casa de cambio digital líder en Venezuela y la región, reconocida por nuestra 
-                  innovación tecnológica, compromiso con el cliente y contribución al crecimiento 
-                  económico sostenible.
-                </p>
-              </div>
+
+            <div className={styles.visionCard} data-animate="fade-up" data-delay="0.1">
+              <h2>Visión</h2>
+              <p>
+                Ser la casa de cambio digital líder en Venezuela y la región, reconocida por nuestra
+                innovación tecnológica, compromiso con el cliente y contribución al crecimiento
+                económico sostenible.
+              </p>
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* Timeline Section */}
       <Section className={styles.timelineSection}>
@@ -139,36 +93,28 @@ const Conocenos = () => {
       </Section>
 
       {/* Values Section */}
-      <Section className={styles.valuesSection}>
+      <section className={styles.valuesSection}>
+        <div className={styles.valuesBackground}>
+          <img src="/images/temp/intuitivo.webp" alt="" />
+        </div>
         <div className="container">
-          <div className={styles.valuesHeader}>
-            <h2 data-animate="fade-up">Nuestros Valores</h2>
-            <p data-animate="fade-up" data-delay="0.1">
-              Los principios que guían cada una de nuestras operaciones y decisiones
-            </p>
-          </div>
-          
-          <div className={styles.valuesGrid}>
-            {values.map((value, index) => {
-              const IconComponent = value.icon;
-              return (
-                <div
+          <div className={styles.valuesContent}>
+            <h2 data-animate="fade-up">Nuestros valores</h2>
+            <div className={styles.valuesPills}>
+              {values.map((value, index) => (
+                <span
                   key={index}
-                  className={styles.valueCard}
+                  className={styles.valuePill}
                   data-animate="fade-up"
                   data-delay={`${0.1 * (index + 1)}`}
                 >
-                  <div className={styles.valueIcon}>
-                    <IconComponent size={32} strokeWidth={2} />
-                  </div>
-                  <h3>{value.title}</h3>
-                  <p>{value.description}</p>
-                </div>
-              );
-            })}
+                  {value}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* CTA Section */}
       <Section className={styles.ctaSection}>

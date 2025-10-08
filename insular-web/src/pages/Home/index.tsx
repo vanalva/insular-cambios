@@ -597,21 +597,27 @@ const Home = () => {
             <div className={`${styles.rateCard} ${styles.rateCardUsd}`} data-animate="fade-up">
               <div className={styles.rateHeader}>
                   <p className={styles.rateLabel}>Cambio US$</p>
-                <span className={styles.rateIcon}>↗</span>
+                <span className={styles.rateIcon}>
+                  <img src="/icons/arrow_top-right_naked.svg" alt="trending" />
+                </span>
               </div>
               <p ref={usdRateRef} className={styles.rateValue}>Bs. 0,0000</p>
             </div>
             <div className={`${styles.rateCard} ${styles.rateCardEur}`} data-animate="fade-up" data-delay="0.1">
               <div className={styles.rateHeader}>
                   <p className={styles.rateLabel}>Cambio EUR€</p>
-                <span className={styles.rateIcon}>↗</span>
+                <span className={styles.rateIcon}>
+                  <img src="/icons/arrow_top-right_naked.svg" alt="trending" />
+                </span>
               </div>
               <p ref={eurRateRef} className={styles.rateValue}>Bs. 0,0000</p>
             </div>
             <div className={`${styles.rateCard} ${styles.rateCardDate}`} data-animate="fade-up" data-delay="0.2">
               <div className={styles.rateHeader}>
                   <p className={styles.rateLabel}>Fecha</p>
-                <span className={styles.rateIcon}>↗</span>
+                <span className={styles.rateIcon}>
+                  <img src="/icons/arrow_top-right_naked.svg" alt="trending" />
+                </span>
               </div>
               <p className={styles.rateValue}>19 / 09 / 2025</p>
             </div>

@@ -73,8 +73,9 @@
 }
 
 .secondary:hover {
-  color: var(--color-caja-fuerte);
+  color: var(--color-white);
   border-color: var(--color-red-electrica);
+  background-color: var(--color-red-electrica);
 }
 
 .outline {

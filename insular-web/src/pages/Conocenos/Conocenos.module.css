@@ -82,89 +82,52 @@
   align-items: center;
 }
 
-/* ===== STORY SECTION ===== */
-.storySection {
+/* ===== MISSION & VISION SECTION ===== */
+.missionVisionSection {
   background: var(--color-background);
   padding: var(--space-3xl) 0;
 }
 
-.storyHeader {
-  text-align: center;
-  margin-bottom: var(--space-2xl);
-}
-
-.storyHeader h2 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 500;
-  line-height: 1.15;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-sm);
-  font-family: var(--font-primary);
-}
-
-.storyHeader p {
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-light);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.storyGrid {
+.missionVisionGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(3rem, 6vw, 5rem);
-  align-items: start;
-}
-
-.storyContent h3 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-sm);
-  font-family: var(--font-primary);
-}
-
-.storyContent p {
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-lg);
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-light);
-}
-
-.missionVision {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2rem);
 }
 
 .missionCard,
 .visionCard {
-  background: var(--color-firma-azul);
-  padding: clamp(2rem, 4vw, 3rem);
+  padding: clamp(2.5rem, 5vw, 4rem);
   border-radius: 24px 0 24px 0;
   color: var(--color-white);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.missionCard h4,
-.visionCard h4 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+.missionCard {
+  background: var(--color-firma-azul);
+}
+
+.visionCard {
+  background: var(--color-red-electrica);
+}
+
+.missionCard h2,
+.visionCard h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 500;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
   font-family: var(--font-primary);
 }
 
 .missionCard p,
 .visionCard p {
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
-  line-height: 1.5;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.6;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-light);
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 /* ===== TIMELINE SECTION ===== */
@@ -239,76 +202,73 @@
 
 /* ===== VALUES SECTION ===== */
 .valuesSection {
-  background: var(--color-background);
+  position: relative;
   padding: var(--space-3xl) 0;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
 }
 
-.valuesHeader {
-  text-align: center;
-  margin-bottom: var(--space-2xl);
+.valuesBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.valuesHeader h2 {
+.valuesBackground::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20, 16, 41, 0.85) 0%, rgba(20, 16, 41, 0.6) 100%);
+  z-index: 1;
+}
+
+.valuesBackground img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.valuesContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.valuesContent h2 {
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 500;
   line-height: 1.15;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-sm);
+  color: var(--color-white);
   font-family: var(--font-primary);
 }
 
-.valuesHeader p {
+.valuesPills {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.valuePill {
+  background: var(--color-white);
+  color: var(--color-firma-azul);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-family: var(--font-brand);
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-light);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.valuesGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1.5rem, 3vw, 2rem);
-}
-
-.valueCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px 0 24px 0;
-  padding: clamp(2rem, 4vw, 3rem);
-  text-align: center;
+  font-weight: 500;
+  white-space: nowrap;
   transition: all 0.3s ease;
 }
 
-.valueCard:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--color-billete-nuevot);
-  transform: translateY(-4px);
-}
-
-.valueIcon {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  margin-bottom: var(--space-lg);
-  display: block;
-}
-
-.valueCard h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-sm);
-  font-family: var(--font-primary);
-}
-
-.valueCard p {
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-light);
-  margin: 0;
+.valuePill:hover {
+  background: var(--color-red-electrica);
+  color: var(--color-white);
+  transform: translateY(-2px);
 }
 
 /* ===== CTA SECTION ===== */
@@ -350,17 +310,16 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .storyGrid,
-  .timeline,
-  .valuesGrid {
+  .missionVisionGrid,
+  .timeline {
     grid-template-columns: 1fr;
   }
-  
+
   .timelineItem {
     flex-direction: column;
     gap: var(--space-md);
   }
-  
+
   .timelineYear {
     align-self: flex-start;
   }
@@ -375,9 +334,15 @@
     max-width: 100%;
   }
 
-  .storyHeader,
-  .timelineHeader,
-  .valuesHeader {
+  .timelineHeader {
     margin-bottom: var(--space-xl);
+  }
+
+  .valuesPills {
+    flex-direction: column;
+  }
+
+  .valuePill {
+    text-align: center;
   }
 }

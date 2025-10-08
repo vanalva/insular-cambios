@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ArrowRight } from 'lucide-react';
 import CTAButton from '../../components/CTAButton';
 import styles from './Servicios.module.css';
 
@@ -13,17 +12,20 @@ const Servicios = () => {
     {
       title: 'Pago móvil',
       description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
-      icon: ArrowRight
+      icon: '/icons/arrow_right_naked.svg',
+      bgImage: '/images/temp/remesa-recibida.webp'
     },
     {
       title: 'Crédito inmediato',
       description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
-      icon: ArrowRight
+      icon: '/icons/arrow_right_naked.svg',
+      bgImage: '/images/temp/compra.webp'
     },
     {
       title: 'Retiro físico',
       description: 'Retiro en nuestra agencia física en Caracas: Avenida Francisco de Miranda, Torre Seguros Sudamerica, local PB-7 Urbanización El Rosal, municipio Chacao.',
-      icon: ArrowRight
+      icon: '/icons/arrow_right_naked.svg',
+      bgImage: '/images/temp/team.webp'
     }
   ];
 
@@ -111,12 +113,17 @@ const Servicios = () => {
             </div>
             <div className={styles.receiveCards}>
               {receiveOptions.map((option, index) => {
-                const IconComponent = option.icon;
                 return (
-                  <div key={index} className={styles.receiveCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
+                  <div
+                    key={index}
+                    className={styles.receiveCard}
+                    data-animate="fade-up"
+                    data-delay={`${0.1 * (index + 1)}`}
+                    style={{ '--bg-image': `url(${option.bgImage})` } as React.CSSProperties}
+                  >
                     <div className={styles.receiveCardContent}>
                       <div className={styles.receiveCardIcon}>
-                        <IconComponent size={24} strokeWidth={2} />
+                        <img src={option.icon} alt={`${option.title} icon`} />
                       </div>
                       <h3>{option.title}</h3>
                     </div>

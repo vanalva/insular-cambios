@@ -112,7 +112,12 @@ const RateCards = () => {
 
                 <div className={styles.change}>
                   <span className={rate.change > 0 ? styles.positive : styles.negative}>
-                    {rate.change > 0 ? '↑' : '↓'} {Math.abs(rate.change)}%
+                    <img
+                      src={rate.change > 0 ? '/icons/chevron_up_naked.svg' : '/icons/chevron_down_naked.svg'}
+                      alt={rate.change > 0 ? 'up' : 'down'}
+                      className={styles.changeIcon}
+                    />
+                    {Math.abs(rate.change)}%
                   </span>
                 </div>
               </div>

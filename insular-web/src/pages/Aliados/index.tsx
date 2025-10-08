@@ -1,64 +1,24 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Globe, DollarSign, Zap, Lock } from 'lucide-react';
 import Section from '../../components/Section';
 import CTAButton from '../../components/CTAButton';
 import styles from './Aliados.module.css';
 
 const Aliados = () => {
-  useEffect(() => {
-    // ScrollTrigger animations will be added here
-  }, []);
+  const [selectedCountry, setSelectedCountry] = useState<string>('Canadá');
 
-  const partners = [
-    { 
-      name: 'MoneyGram', 
-      logo: '/logos/partners/moneygram-collab-logo.svg', 
-      description: 'Remesas internacionales con cobertura global',
-      category: 'Remesas'
-    },
-    { 
-      name: 'Ria', 
-      logo: '/logos/partners/ria-collab-logo.svg', 
-      description: 'Transferencias rápidas y seguras',
-      category: 'Remesas'
-    },
-    { 
-      name: 'Remitly', 
-      logo: '/logos/partners/remitly-collab-logo.svg', 
-      description: 'Plataforma digital de envíos',
-      category: 'Remesas'
-    },
-    { 
-      name: 'Papaya', 
-      logo: '/logos/partners/papaya-collab-logo.svg', 
-      description: 'Soluciones financieras innovadoras',
-      category: 'Fintech'
-    }
+  const countries = [
+    { id: 'canada', name: 'Canadá', logo: '/logos/partners/moneygram-collab-logo.svg', bgColor: '#b8b4ff' },
+    { id: 'chile', name: 'Chile', logo: '/logos/partners/ria-collab-logo.svg', bgColor: '#ffb4d4' },
+    { id: 'colombia', name: 'Colombia', logo: '/logos/partners/remitly-collab-logo.svg', bgColor: '#b4f0e4' },
+    { id: 'costa-rica', name: 'Costa Rica', logo: '/logos/partners/papaya-collab-logo.svg', bgColor: '#d4c4ff' },
+    { id: 'ecuador', name: 'Ecuador', logo: '/logos/partners/moneygram-collab-logo.svg', bgColor: '#ffd4b4' },
+    { id: 'mexico', name: 'México', logo: '/logos/partners/ria-collab-logo.svg', bgColor: '#ffb4c4' },
+    { id: 'peru', name: 'Perú', logo: '/logos/partners/remitly-collab-logo.svg', bgColor: '#c4d4ff' },
+    { id: 'estados-unidos', name: 'Estados Unidos', logo: '/logos/partners/papaya-collab-logo.svg', bgColor: '#b4d4ff' }
   ];
 
-  const benefits = [
-    {
-      icon: Globe,
-      title: 'Cobertura Global',
-      description: 'Conectamos con más de 200 países a través de nuestra red de aliados internacionales de confianza.'
-    },
-    {
-      icon: DollarSign,
-      title: 'Mejores Tarifas',
-      description: 'Negociamos las mejores tasas de cambio gracias a nuestro volumen de operaciones y relaciones estratégicas.'
-    },
-    {
-      icon: Zap,
-      title: 'Velocidad',
-      description: 'Transferencias instantáneas y procesamiento rápido para que recibas tu dinero cuando lo necesites.'
-    },
-    {
-      icon: Lock,
-      title: 'Seguridad',
-      description: 'Todas nuestras operaciones están respaldadas por los más altos estándares de seguridad y cumplimiento.'
-    }
-  ];
+  const selectedCountryData = countries.find(c => c.name === selectedCountry) || countries[0];
 
   return (
     <>
@@ -85,82 +45,44 @@ const Aliados = () => {
         </div>
       </section>
 
-      {/* Partners Showcase Section */}
-      <Section className={styles.partnersSection}>
+      {/* Guarantee Section */}
+      <section className={styles.guaranteeSection}>
         <div className="container">
-          <div className={styles.partnersHeader}>
-            <h2 data-animate="fade-up">Aliados Estratégicos</h2>
-            <p data-animate="fade-up" data-delay="0.1">
-              Colaboramos con las mejores empresas del sector para ofrecerte servicios de clase mundial
-            </p>
-          </div>
-          
-          <div className={styles.partnersGrid}>
-            {partners.map((partner, index) => (
-              <div
-                key={index}
-                className={styles.partnerCard}
-                data-animate="fade-up"
-                data-delay={`${0.1 * (index + 1)}`}
-              >
-                <div className={styles.partnerLogo}>
-                  <img src={partner.logo} alt={partner.name} />
-                </div>
-                <div className={styles.partnerInfo}>
-                  <span className={styles.partnerCategory}>{partner.category}</span>
-                  <h3>{partner.name}</h3>
-                  <p>{partner.description}</p>
-                </div>
+          <div className={styles.guaranteeContent}>
+            <div className={styles.guaranteeLeft}>
+              <h2>Garantizamos que tus familiares reciben sus remesas</h2>
+              <p className={styles.guaranteeSubtext}>¡Sin intermediarios ni retrasos!</p>
+              <div className={styles.guaranteeActions}>
+                <CTAButton text="Quiero ser aliado" variant="primary" />
+                <CTAButton text="Conocer sedes" variant="secondary" />
               </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Benefits Section */}
-      <Section className={styles.benefitsSection}>
-        <div className="container">
-          <div className={styles.benefitsHeader}>
-            <h2 data-animate="fade-up">Beneficios de Nuestra Red</h2>
-            <p data-animate="fade-up" data-delay="0.1">
-              Al trabajar con aliados de primer nivel, podemos ofrecerte ventajas únicas
-            </p>
-          </div>
-          
-          <div className={styles.benefitsGrid}>
-            {benefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
-              return (
-                <div
-                  key={index}
-                  className={styles.benefitCard}
-                  data-animate="fade-up"
-                  data-delay={`${0.1 * (index + 1)}`}
-                >
-                  <div className={styles.benefitIcon}>
-                    <IconComponent size={32} strokeWidth={2} />
+            </div>
+            <div className={styles.guaranteeRight}>
+              <div className={styles.countryList}>
+                {countries.map((country, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.countryItem} ${selectedCountry === country.name ? styles.countryItemActive : ''}`}
+                    onMouseEnter={() => setSelectedCountry(country.name)}
+                  >
+                    <span className={styles.countryDot}></span>
+                    <span className={styles.countryName}>{country.name}</span>
                   </div>
-                  <h3>{benefit.title}</h3>
-                  <p>{benefit.description}</p>
-                </div>
-              );
-            })}
+                ))}
+              </div>
+              <div
+                className={styles.partnerLogoCard}
+                style={{ background: selectedCountryData.bgColor }}
+              >
+                <img
+                  src={selectedCountryData.logo}
+                  alt={selectedCountryData.name}
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </Section>
-
-      {/* CTA Section */}
-      <Section className={styles.ctaSection}>
-        <div className="container">
-          <div className={styles.ctaCard} data-animate="fade-up">
-            <h2>¿Listo para empezar?</h2>
-            <p>
-              Únete a miles de personas que ya confían en nosotros para sus transferencias internacionales.
-            </p>
-            <CTAButton text="¡Empieza ahora!" />
-          </div>
-        </div>
-      </Section>
+      </section>
     </>
   );
 };

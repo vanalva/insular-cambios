@@ -198,12 +198,9 @@
 .rateIcon {
   width: clamp(20px, 2vh + 0.5vw, 28px);
   height: clamp(20px, 2vh + 0.5vw, 28px);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(14px, 1.5vh + 0.3vw, 18px);
   color: var(--color-white);
 }
 

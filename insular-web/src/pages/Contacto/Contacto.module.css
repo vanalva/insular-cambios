@@ -125,7 +125,7 @@
   width: 100%;
   flex: 1.2;
   min-height: 50%;
-  background: url('/images/temp/confianza.webp') center center / cover no-repeat;
+  background: url('/images/temp/atencion.webp') center center / cover no-repeat;
 }
 
 .ctaContent {
@@ -243,8 +243,14 @@
   gap: clamp(0.35rem, 0.5vh + 0.2vw, var(--space-sm));
   grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) auto;
   align-items: stretch;
-  max-height: 65vh;
-  min-height: 0;
+  max-height: 70vh;
+  min-height: 60vh;
+}
+
+@media (max-width: 968px) {
+  .heroRight {
+    min-height: 0;
+  }
 }
 
 .infoCard {
@@ -343,6 +349,10 @@
   .heroRight {
     order: 2;
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: var(--space-md);
+    min-height: auto;
+    max-height: none;
   }
 
   .ctaButtons {

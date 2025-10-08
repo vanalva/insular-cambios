@@ -185,9 +185,10 @@
 }
 
 .receiveCards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: var(--space-lg);
+  width: 100%;
+  height: 450px;
 }
 
 .receiveCard {
@@ -195,34 +196,90 @@
   padding: clamp(1.5rem, 3vw, 2.5rem);
   border-radius: 24px 0 24px 0;
   position: relative;
-  transition: transform 0.3s ease;
-  min-height: 200px;
+  width: calc(33.333% - var(--space-lg) * 2 / 3);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  transition: width 1s ease-in-out;
+  flex-shrink: 0;
 }
 
-.receiveCard:hover {
-  transform: translateY(-4px);
+/* Background image container - only visible when hovered, positioned at bottom */
+.receiveCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease, height 0.8s ease;
+  z-index: 0;
+  border-radius: 0 0 24px 0;
+}
+
+.receiveCards:hover .receiveCard:hover::after {
+  opacity: 1;
+  height: 60%;
+}
+
+/* Ensure content is above background */
+.receiveCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Three-cell grid when expanded: 2 columns on top, 1 full-width below */
+.receiveCards:hover .receiveCard:hover {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.receiveCards:hover .receiveCard:hover .receiveCardContent {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.receiveCards:hover .receiveCard:hover p {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  align-self: center;
+}
+
+.receiveCards:hover .receiveCard:not(:hover) {
+  width: 10%;
+}
+
+.receiveCards:hover .receiveCard:hover {
+  width: calc(100% - 20% - var(--space-lg) * 2);
 }
 
 .receiveCardContent {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  transition: opacity 0.6s ease;
 }
 
 .receiveCardIcon {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
   color: var(--color-white);
   align-self: flex-start;
+  transition: opacity 0.6s ease;
 }
 
 .receiveCard h3 {
@@ -231,6 +288,7 @@
   color: var(--color-white);
   margin: 0;
   font-family: var(--font-primary);
+  transition: opacity 0.6s ease;
 }
 
 .receiveCard p {
@@ -240,6 +298,15 @@
   font-family: var(--font-primary);
   font-weight: var(--font-weight-light);
   margin: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* Hide content in non-hovered cards */
+.receiveCards:hover .receiveCard:not(:hover) .receiveCardContent,
+.receiveCards:hover .receiveCard:not(:hover) .receiveCardIcon,
+.receiveCards:hover .receiveCard:not(:hover) h3,
+.receiveCards:hover .receiveCard:not(:hover) p {
+  opacity: 0;
 }
 
 /* ===== BENEFITS SECTION ===== */
