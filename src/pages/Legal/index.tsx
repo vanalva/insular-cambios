@@ -359,7 +359,7 @@ const Legal = () => {
   };
 
   // Filter content based on search
-  const highlightSearchQuery = (content: React.ReactNode): React.ReactNode => {
+  const highlightSearchQuery = (content: ReactNode): ReactNode => {
     if (!searchQuery) return content;
     // This is a simple implementation - in production you'd want a more sophisticated search
     return content;
