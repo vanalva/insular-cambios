@@ -25,7 +25,9 @@ jobs:
       run: npm ci --legacy-peer-deps
     
     - name: Build
-      run: npm run build
+      run: |
+        npm run build
+        echo "Build completed successfully"
     
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
