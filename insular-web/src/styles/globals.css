@@ -34,8 +34,8 @@ p {
   font-weight: var(--font-weight-light);
 }
 
-/* Global image defaults - exclude logos */
-img:not([alt*="logo"]):not([alt*="Logo"]):not([class*="logo"]):not([class*="Logo"]) {
+/* Global image defaults - exclude logos and icons */
+img:not([alt*="logo"]):not([alt*="Logo"]):not([class*="logo"]):not([class*="Logo"]):not([src*="/icons/"]):not([alt*="icon"]):not([src*="/logos/"]) {
   border: 1px solid var(--color-border-grey);
   border-radius: var(--radius-sm);
 }

@@ -119,8 +119,10 @@
 .marquee {
   display: flex;
   width: fit-content;
-  animation: scroll 30s linear infinite;
+  animation: scroll 30s linear infinite !important;
   will-change: transform;
+  animation-fill-mode: none !important;
+  animation-play-state: running !important;
 }
 
 .marqueeWrapper:hover .marquee {
@@ -144,10 +146,11 @@
   opacity: 0.9;
   user-select: none;
   transition: opacity 0.3s ease;
+  display: block;
 }
 
-.marqueeWrapper:hover .partnerLogo {
-  opacity: 0.7;
+.partnerLogo:hover {
+  opacity: 1;
 }
 
 @keyframes scroll {
@@ -155,7 +158,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
@@ -269,16 +272,19 @@
 
 .benefitsGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-lg);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
 }
 
 .benefitCard {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2.5rem, 4vw, 4rem);
   border-radius: 24px 0 24px 0;
   transition: all 0.3s ease;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .benefitCard:hover {
@@ -288,19 +294,22 @@
 }
 
 .benefitIcon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(66, 43, 226, 0.2);
+  width: 100%;
+  height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: var(--space-md);
+  justify-content: flex-start;
+  margin-bottom: var(--space-lg);
 }
 
-.benefitCard h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+.benefitIcon img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.benefitCard h2 {
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
   font-weight: 500;
   color: var(--color-text-primary);
   margin-bottom: var(--space-sm);

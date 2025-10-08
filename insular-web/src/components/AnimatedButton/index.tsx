@@ -1,27 +1,27 @@
-import styles from './CTAButton.module.css';
+import styles from './AnimatedButton.module.css';
 
-interface CTAButtonProps {
+interface AnimatedButtonProps {
   text: string;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline' | 'inherit';
+  variant?: 'primary' | 'secondary';
   type?: 'button' | 'submit';
 }
 
-const CTAButton = ({
+const AnimatedButton = ({
   text,
   onClick,
   variant = 'primary',
   type = 'button',
-}: CTAButtonProps) => {
+}: AnimatedButtonProps) => {
   return (
     <button
       type={type}
       className={`${styles.button} ${styles[variant]}`}
       onClick={onClick}
     >
-      <span>{text}</span>
+      {text}
     </button>
   );
 };
 
-export default CTAButton;
+export default AnimatedButton;

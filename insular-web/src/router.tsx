@@ -5,6 +5,7 @@ import Servicios from './pages/Servicios';
 import Aliados from './pages/Aliados';
 import Contacto from './pages/Contacto';
 import Legal from './pages/Legal';
+import TestButton from './pages/TestButton';
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
       <Route path="/aliados" element={<Aliados />} />
       <Route path="/contacto" element={<Contacto />} />
       <Route path="/legal" element={<Legal />} />
+      <Route path="/test-button" element={<TestButton />} />
     </Routes>
   );
 };

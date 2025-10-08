@@ -16,64 +16,46 @@
   line-height: 1;
   letter-spacing: 0.01em;
   color: var(--color-alerta);
-  background: transparent;
+  background-color: transparent;
   border-radius: var(--cta-radius-lg) 0 var(--cta-radius-lg) 0;
   cursor: pointer;
   min-height: 40px;
   min-width: 120px;
   border: 2px solid currentColor;
-  box-shadow: none;
-  transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
   white-space: nowrap;
   overflow: hidden;
   position: relative;
+  isolation: isolate;
+  transition: color 0.3s ease !important;
 }
 
-.labelWrap {
-  position: relative;
-  display: inline-block;
-  line-height: 1;
-  height: 1em;
-  overflow: hidden;
-}
-
-.labelContent {
-  position: relative;
-  will-change: transform;
-  display: block;
-}
-
-.label {
-  white-space: nowrap;
-  display: block;
-  line-height: 1;
-  height: 1em;
-  margin: 0;
-  padding: 0;
-}
-
-.clone {
-  white-space: nowrap;
-  display: block;
-  line-height: 1;
-  height: 1em;
-  margin: 0;
-  padding: 0;
-}
-
-.srOnly {
+.button::before {
+  content: '';
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  bottom: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  background-color: var(--color-alerta);
+  border-radius: 50%;
+  transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  z-index: -1;
 }
 
-.button:hover { background: var(--color-alerta); color: var(--color-white); transform: none; box-shadow: none; }
+.button > span {
+  position: relative;
+  z-index: 1;
+}
+
+.button:hover {
+  color: var(--color-white);
+}
+
+.button:hover::before {
+  width: 400%;
+  height: 400%;
+}
 
 .button:focus-visible {
   outline: 3px solid rgba(249, 50, 67, 0.55);
@@ -81,22 +63,33 @@
 }
 
 .secondary {
-  background: var(--color-white);
+  background-color: var(--color-white);
   color: var(--color-firma-azul);
   border-color: var(--color-white);
-  box-shadow: none;
+}
+
+.secondary::before {
+  background-color: var(--color-red-electrica);
 }
 
 .secondary:hover {
-  background: var(--color-red-electrica);
   color: var(--color-caja-fuerte);
   border-color: var(--color-red-electrica);
-  box-shadow: none;
 }
 
-.outline { background: transparent; color: var(--color-white); border: 2px solid currentColor; box-shadow: none; }
+.outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid currentColor;
+}
 
-.outline:hover { background: var(--color-white); color: var(--color-black); transform: none; }
+.outline::before {
+  background-color: var(--color-white);
+}
+
+.outline:hover {
+  color: var(--color-black);
+}
 
 /* Wide/Block Button Variant */
 .wide {
@@ -106,30 +99,30 @@
 
 /* Light Mode Button (for dark backgrounds) */
 .light {
-  background: var(--color-white);
+  background-color: var(--color-white);
   color: var(--color-firma-azul);
   border-color: var(--color-white);
 }
 
 .light:hover {
-  background: var(--color-saldo-claro);
+  background-color: var(--color-saldo-claro);
   color: var(--color-firma-azul);
 }
 
 /* Inherit variant - inherits color from parent container */
 .inherit {
-  background: transparent;
+  background-color: transparent;
   color: inherit;
   border-color: currentColor;
-  box-shadow: none;
+}
+
+.inherit::before {
+  background-color: white;
 }
 
 .inherit:hover {
-  background: white;
   color: var(--color-red-electrica);
   border-color: white;
-  transform: none;
-  box-shadow: none;
 }
 
 @media (max-width: 768px) {

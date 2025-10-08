@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ArrowRight, Zap, Building2, Globe, CreditCard } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import CTAButton from '../../components/CTAButton';
 import styles from './Servicios.module.css';
 
@@ -31,22 +31,22 @@ const Servicios = () => {
     {
       title: 'Rapidez y Eficiencia',
       description: 'Nuestras operaciones son rápidas y directas',
-      icon: Zap
+      icon: '/icons/hand_coins_boxed.svg'
     },
     {
       title: 'Legalidad y Respaldo',
       description: 'Operamos 100% dentro del marco legal venezolano, garantizando su tranquilidad.',
-      icon: Building2
+      icon: '/icons/database_dollar_boxed.svg'
     },
     {
       title: 'Conexión Global',
       description: 'Gracias a nuestros aliados internacionales, conectamos a Venezuela con el mundo.',
-      icon: Globe
+      icon: '/icons/globe_boxed.svg'
     },
     {
       title: 'Comodidad Total',
       description: 'Elija entre opciones digitales (Pago Móvil) o presenciales para sus transacciones.',
-      icon: CreditCard
+      icon: '/icons/cards_boxed.svg'
     }
   ];
 
@@ -138,13 +138,15 @@ const Servicios = () => {
           </div>
           <div className={styles.benefitsGrid}>
             {benefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
               return (
                 <div key={index} className={styles.benefitCard} data-animate="fade-up" data-delay={`${0.1 * (index + 1)}`}>
                   <div className={styles.benefitIcon}>
-                    <IconComponent size={32} strokeWidth={2} />
+                    <img
+                      src={benefit.icon}
+                      alt={`${benefit.title} icon`}
+                    />
                   </div>
-                  <h3>{benefit.title}</h3>
+                  <h2>{benefit.title}</h2>
                   <p>{benefit.description}</p>
                 </div>
               );
