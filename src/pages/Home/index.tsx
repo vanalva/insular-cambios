@@ -6,6 +6,18 @@ import Section from '../../components/Section';
 import CTAButton from '../../components/CTAButton';
 import styles from './Home.module.css';
 
+// Declare spline-viewer element for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'spline-viewer': {
+        url: string;
+        [key: string]: any;
+      };
+    }
+  }
+}
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {

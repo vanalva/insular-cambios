@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import Section from '../../components/Section';
 import CTAButton from '../../components/CTAButton';
 import styles from './Aliados.module.css';
 
