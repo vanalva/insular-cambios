@@ -1,0 +1,13 @@
+# GitHub Pages .htaccess
+# Note: GitHub Pages doesn't support .htaccess, but this is for reference
+
+# For GitHub Pages, routing is handled by the 404.html fallback
+# This file is kept for documentation purposes
+
+# If you deploy to a different hosting provider that supports .htaccess,
+# uncomment the following lines:
+
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . /index.html [L]
