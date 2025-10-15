@@ -41,7 +41,7 @@ const AppContent = () => {
 function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/Insular">
         <AppContent />
       </BrowserRouter>
     </HelmetProvider>
