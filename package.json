@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "vite build --mode production",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build:prod && echo 'Build complete! Upload dist/ folder to GoDaddy hosting.'"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
