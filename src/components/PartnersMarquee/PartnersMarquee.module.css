@@ -1,0 +1,96 @@
+/* Infinite Scroll Marquee */
+.marqueeWrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: var(--space-xl) 0;
+  /* Ensure flex context isn't broken */
+  display: block;
+}
+
+/* Fade gradients on edges */
+.marqueeWrapper::before,
+.marqueeWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marqueeWrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-background) 0%, rgba(16, 16, 33, 0) 100%);
+}
+
+.marqueeWrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-background) 0%, rgba(16, 16, 33, 0) 100%);
+}
+
+.marquee {
+  display: flex !important;
+  flex-direction: row !important;
+  width: fit-content;
+  animation: scroll 30s linear infinite;
+  will-change: transform;
+  /* Debug: Make sure animation is running */
+  animation-play-state: running !important;
+}
+
+.marqueeWrapper:hover .marquee {
+  animation-play-state: paused;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.marqueeContent {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: clamp(3rem, 6vw, 6rem);
+  flex-shrink: 0;
+  padding-right: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+  white-space: nowrap;
+  height: 5rem;
+}
+
+.partnerLogo {
+  height: 3rem !important;
+  width: auto !important;
+  max-height: 3rem !important;
+  min-height: 3rem !important;
+  max-width: 150px !important;
+  object-fit: contain !important;
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.9;
+  user-select: none;
+  transition: opacity 0.3s ease;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+.partnerLogo:hover {
+  opacity: 1;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Ensure marquee animation works */
+.marquee {
+  animation: scroll 30s linear infinite !important;
+  animation-fill-mode: none !important;
+  animation-play-state: running !important;
+}

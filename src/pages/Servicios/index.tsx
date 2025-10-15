@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import CTAButton from '../../components/CTAButton';
+import PartnersMarquee from '../../components/PartnersMarquee';
 import styles from './Servicios.module.css';
 
 const Servicios = () => {
@@ -78,30 +79,7 @@ const Servicios = () => {
       </section>
 
       {/* Marquee Section - Partners */}
-      <div className={styles.marqueeWrapper}>
-        <div className={styles.marquee}>
-          <div className={styles.marqueeContent}>
-            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-          </div>
-          <div className={styles.marqueeContent} aria-hidden="true">
-            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-            <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-            <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-            <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-            <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-          </div>
-        </div>
-      </div>
+      <PartnersMarquee />
 
       {/* Receive Options Section */}
       <section className={styles.receiveSection}>

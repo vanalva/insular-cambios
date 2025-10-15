@@ -43,10 +43,10 @@ const Header = () => {
     const navLinks = navRef.current.querySelectorAll('a');
 
     // Kill any existing animations to prevent getting stuck
-    gsap.killTweensOf([headerRef.current, headerContentRef.current, logoRef.current, ...Array.from(navLinks)]);
+    gsap.killTweensOf([headerRef.current, headerContentRef.current, ...Array.from(navLinks)]);
 
-    // Fade out header container and all content as a block
-    gsap.to([headerRef.current, logoRef.current, ...Array.from(navLinks)], {
+    // Fade out header container and nav links (NOT logo - it has its own animation)
+    gsap.to([headerRef.current, ...Array.from(navLinks)], {
       opacity: 0,
       duration: 0.25,
       ease: 'power2.out',
@@ -63,16 +63,8 @@ const Header = () => {
             ease: 'power2.in'
           });
 
-          // Animate logo from left
-          gsap.fromTo(logoRef.current,
-            { opacity: 0, x: -20 },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.25,
-              ease: 'power2.out'
-            }
-          );
+          // Logo handles its own visibility transitions via AnimatedLogo component
+          // No need to animate it here
 
           // Stagger nav links from bottom to top (reverse order)
           const reversedLinks = Array.from(navLinks).reverse();
@@ -289,7 +281,7 @@ const Header = () => {
 
   const navigation = [
     { path: '/', label: 'Inicio' },
-    { path: '/conocenos', label: 'Conocenos' },
+    { path: '/conocenos', label: 'Conócenos' },
     { path: '/servicios', label: 'Servicios' },
     { path: '/aliados', label: 'Aliados' },
     { path: '/contacto', label: 'Contacto' }

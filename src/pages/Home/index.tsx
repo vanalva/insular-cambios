@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Section from '../../components/Section';
 import CTAButton from '../../components/CTAButton';
+import PartnersMarquee from '../../components/PartnersMarquee';
 import styles from './Home.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,6 +13,7 @@ const Home = () => {
   const logoRef = useRef<HTMLDivElement>(null);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
   const revealTextRef = useRef<HTMLParagraphElement>(null);
+  const revealTextRef2 = useRef<HTMLParagraphElement>(null);
   const usdRateRef = useRef<HTMLParagraphElement>(null);
   const eurRateRef = useRef<HTMLParagraphElement>(null);
   const [svgContent, setSvgContent] = useState<string>('');
@@ -54,6 +56,13 @@ const Home = () => {
           start: 'top bottom',
           end: 'center center',
           scrub: 1,
+          onComplete: () => {
+            // When animation finishes, ensure the logo stays visible by setting fill
+            gsap.set(path, {
+              fill: 'currentColor',
+              stroke: 'currentColor',
+            });
+          },
         },
       });
     });
@@ -506,6 +515,50 @@ const Home = () => {
     };
   }, []);
 
+  // Scroll reveal text effect for second paragraph
+  useEffect(() => {
+    if (!revealTextRef2.current) return;
+
+    const text = revealTextRef2.current.textContent || '';
+    const words = text.split(' ');
+
+    // Wrap each word in a span
+    revealTextRef2.current.innerHTML = words
+      .map(word => `<span class="word" style="color: rgba(231, 233, 228, 0.15); transition: color 0.3s ease;">${word}</span>`)
+      .join(' ');
+
+    const spans = revealTextRef2.current.querySelectorAll('span.word');
+
+    // Create one ScrollTrigger for the whole paragraph
+    ScrollTrigger.create({
+      trigger: revealTextRef2.current,
+      start: 'top 90%',
+      end: 'center 50%',
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
+
+        spans.forEach((span, index) => {
+          const wordProgress = index / (spans.length - 1);
+
+          if (progress >= wordProgress) {
+            (span as HTMLElement).style.color = 'rgb(231, 233, 228)';
+          } else {
+            (span as HTMLElement).style.color = 'rgba(231, 233, 228, 0.15)';
+          }
+        });
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === revealTextRef2.current) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
+
   // Animate exchange rates numbers on load
   useEffect(() => {
     console.log('Starting rate animations...', { usdRateRef: usdRateRef.current, eurRateRef: eurRateRef.current });
@@ -550,6 +603,7 @@ const Home = () => {
       <Helmet>
         <title>Insular Casa de Cambio - Recibe dinero de otros países</title>
         <meta name="description" content="Casa de cambios autorizada por SUDEBAN, con más de 30 años de trayectoria. Conectamos familias con soluciones rápidas, seguras y sin complicaciones." />
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.76/build/spline-viewer.js"></script>
       </Helmet>
 
       {/* Hero Section - Full width with rates inside */}
@@ -579,7 +633,7 @@ const Home = () => {
                 </div>
                 <div className={styles.heroSubtext}>
                   <span className={styles.subtextIcon}>↗</span>
-                  <p className={styles.subtextText}>¡Ahora puedes realizar tus operaciones de manera sencilla!</p>
+                  <span className={styles.subtextText}>Envia y recibe dinero desde y hacia Venezuela.</span>
                 </div>
               </div>
             </div>
@@ -631,13 +685,12 @@ const Home = () => {
           <div className={styles.remittanceGrid}>
             <div className={styles.remittanceTitle} data-animate="fade-up">
               <h2>
-                Recibe dinero de otros países a través de nuestros aliados
+                Somos Insular Tu Casa de Cambio de Confianza desde hace más de 35 años
               </h2>
             </div>
             <div className={styles.remittanceContent} data-animate="fade-up" data-delay="0.2">
               <p>
-                Trabajamos de la mano con reconocidos aliados internacionales para asegurar que
-                cada remesa llegue de forma rápida, legal y segura a su destino.
+                Queremos mantenerte conectado con el resto del mundo. Darle fuerza a los países más que a los logos.
               </p>
               <div className="btn-wrapper">
                 <CTAButton text="¡Ingresa aquí!" variant="secondary" />
@@ -648,30 +701,7 @@ const Home = () => {
         </div>
 
         {/* Infinite Scroll Marquee - Full Width */}
-        <div className={styles.marqueeWrapper}>
-          <div className={styles.marquee}>
-            <div className={styles.marqueeContent}>
-              <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-              <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-              <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-              <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-              <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-              <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-              <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-              <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-            </div>
-            <div className={styles.marqueeContent} aria-hidden="true">
-              <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-              <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-              <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-              <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-              <img src="/logos/partners/moneygram-collab-logo.svg" alt="MoneyGram" className={styles.partnerLogo} />
-              <img src="/logos/partners/ria-collab-logo.svg" alt="Ria" className={styles.partnerLogo} />
-              <img src="/logos/partners/remitly-collab-logo.svg" alt="Remitly" className={styles.partnerLogo} />
-              <img src="/logos/partners/papaya-collab-logo.svg" alt="Papaya" className={styles.partnerLogo} />
-            </div>
-          </div>
-        </div>
+        <PartnersMarquee />
       </Section>
 
       {/* Global Presence Section */}
@@ -679,11 +709,7 @@ const Home = () => {
         <div className="container">
           <div className={styles.globalContent}>
             <div className={styles.globeCard} data-animate="fade-right">
-              <img 
-                src="/images/sections/global-bg.webp" 
-                alt="Global presence visualization" 
-                className={styles.globeImage}
-              />
+              <spline-viewer url="https://prod.spline.design/xF9sYjSjbot07mJD/scene.splinecode"></spline-viewer>
             </div>
             <div className={styles.globalCard} data-animate="fade-left">
               <p className={styles.globalIntro}>Presentes en más de</p>
@@ -703,7 +729,7 @@ const Home = () => {
       <Section className={styles.locationSection} id="location">
         <div className="container">
           <div className={styles.locationContent} data-animate="fade-up">
-            <h2>Retira tu dinero en nuestra sede en el Rosal</h2>
+            <h2>Recibe dinero a través de pago móvil, crédito inmediato o retiro en físico desde nuestra agencia en Caracas.</h2>
             <p>
               Avenida Francisco de Miranda, Torre Seguros Sudamerica, local PB-7 Urbanización El Rosal,
               municipio Chacao
@@ -730,15 +756,16 @@ const Home = () => {
           </div>
 
           <div className={styles.paymentGrid}>
-            <div className={styles.paymentTitle} data-animate="fade-up">
-              <h2>Recibe dinero a través de</h2>
-            </div>
             <div className={`${styles.paymentCard} ${styles.paymentCardPagoMovil}`} data-animate="fade-up" data-delay="0.1">
               <p className={styles.paymentCardText}>Pago móvil</p>
               <span className={styles.paymentCardIcon}>↗</span>
             </div>
             <div className={`${styles.paymentCard} ${styles.paymentCardCredito}`} data-animate="fade-up" data-delay="0.2">
               <p className={styles.paymentCardText}>Crédito inmediato</p>
+              <span className={styles.paymentCardIcon}>↗</span>
+            </div>
+            <div className={`${styles.paymentCard} ${styles.paymentCardRetiro}`} data-animate="fade-up" data-delay="0.3">
+              <p className={styles.paymentCardText}>Retiro físico</p>
               <span className={styles.paymentCardIcon}>↗</span>
             </div>
           </div>
@@ -750,6 +777,9 @@ const Home = () => {
         <div className="container">
           <div className={styles.revealText}>
             <p ref={revealTextRef}>
+              Ahora puedes realizar tus operaciones de manera sencilla
+            </p>
+            <p ref={revealTextRef2} className={styles.revealTextSmall}>
               En Casa de Cambios Insular somos una remesadora autorizada por SUDEBAN, con más de 30 años de trayectoria en el sector cambiario. Conectamos familias con soluciones rápidas, seguras y sin complicaciones.
             </p>
           </div>
@@ -828,7 +858,7 @@ const Home = () => {
                 <div className={styles.faqCtaImage}></div>
                 <div className={styles.faqCtaContent}>
                   <h2 className="h2 text-white">¿Aún tienes alguna pregunta?</h2>
-                  <p className="body-sm text-white">
+                  <p className="text-white">
                     ¿No encuentras la respuesta a tu pregunta? Habla con nuestro Chat para resolver cualquier inquietud.
                   </p>
                   <div className={styles.faqCtaSpacer}></div>
@@ -844,7 +874,7 @@ const Home = () => {
       <Section className={styles.finalCta} id="final-cta">
         <div className="container">
           <div className={styles.finalCtaCard} data-animate="fade-up">
-            <h2>¡Ahora puedes realizar tus operaciones de manera sencilla!</h2>
+            <h2>Envia y recibe dinero desde y hacia Venezuela.</h2>
             <CTAButton text="¡Empieza ahora!" />
           </div>
         </div>

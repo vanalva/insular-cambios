@@ -131,19 +131,33 @@ const AnimatedLogo = ({ onComplete, isScrolled = false }: AnimatedLogoProps) => 
     };
   }, [hasAnimated, isMounted, onComplete]);
 
-  console.log('AnimatedLogo render - hasAnimated:', hasAnimated, 'isScrolled:', isScrolled);
+  console.log('=== AnimatedLogo RENDER ===');
+  console.log('hasAnimated:', hasAnimated);
+  console.log('isScrolled:', isScrolled);
+  console.log('SVG opacity:', hasAnimated ? 0 : 1);
+  console.log('Full logo opacity:', !isScrolled && hasAnimated ? 1 : 0);
+  console.log('Boxed logo opacity:', isScrolled && hasAnimated ? 1 : 0);
+  console.log('========================');
 
   // Render both logos with crossfade
   return (
     <div className={styles.logoContainer}>
-      {/* Animated SVG - only visible on first load before animation completes */}
-      {!hasAnimated && (
-        <div ref={containerRef} data-preserve-animation className={styles.logoWrapper}>
+      {/* Animated SVG - always render but hide after animation */}
+      <div
+        ref={containerRef}
+        data-preserve-animation
+        className={styles.logoWrapper}
+      >
+          {/* Animated SVG */}
           <svg
             className={styles.animatedLogo}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
             viewBox="0 0 269.1 79.9"
+            style={{
+              opacity: hasAnimated ? 0 : 1,
+              transition: 'opacity 0.5s ease'
+            }}
           >
             <path fill="none" d="M10.9,33.2h0c7.4,0,12.6,6,11.1,12.9l-6.3,29.3h0c-7.4,0-12.6-6-11.2-12.9,0,0,6.3-29.3,6.3-29.3ZM13.1,21.1c.4-4.5,4.8-8.2,9.4-8.2s6.6,2.9,6.3,6.4c-.3,4.4-4.9,8.1-9.6,8.1s-6.3-2.9-6.1-6.3h0Z"/>
             <path fill="none" d="M33.5,33.2h2.5c3.3,0,5.9,2.2,6.2,5.2h0c2.3-1.8,8.2-6.2,15.8-6.2,12.4,0,16.5,10,14,21l-4.8,22.2h-4.9c-4.6,0-7.8-3.8-6.9-8l3.3-14.9c1.2-5.5-.5-9-5.1-9s-3.2.5-4.6,1.2c-3.3,1.7-5.6,4.7-6.3,8.1l-4.9,22.6h-4.8c-4.6,0-7.8-3.7-6.9-7.9l7.4-34.2h0Z"/>
@@ -153,22 +167,46 @@ const AnimatedLogo = ({ onComplete, isScrolled = false }: AnimatedLogoProps) => 
             <path fill="none" d="M218.9,75.3h-3.1c-3.1,0-5.5-2.1-5.6-5h0c-1.8,1.5-7,6-15.1,6s-16-8.6-15.1-19.4c1.1-13.6,12.1-24.9,25.3-24.9s10.8,3.8,12.2,5.8l2.4-4.7h1.1c3.7,0,6.3,3,5.5,6.4l-7.6,35.8h0ZM210.7,51.5c.6-2.6-.2-5.2-2.3-6.7-1-.8-2.4-1.3-4.1-1.3-5.2,0-11,5-11.7,13.3-.4,4.5,2.2,8.2,6.8,8.2s7.1-3,8.7-5.2c.6-.8,1-1.7,1.2-2.7l1.3-5.6h0Z"/>
             <path fill="none" d="M243.9,33.2h0l.6,5.5c2.9-4.1,7.5-6.3,12.1-6.3,11.9,0,7.3,11,7.3,11,0,0-4.6-2.1-10.6,0-4,1.4-7.3,4.4-7.3,4.4l-4.2,19c-1.1,5-5.5,8.5-10.5,8.5h-4.8l7.5-34.5c.9-4.4,5.2-7.6,9.9-7.6h0Z"/>
           </svg>
-        </div>
-      )}
 
-      {/* Full logo - visible when not scrolled and animation completed */}
-      <img
-        src="/logos/insular-logo-header.svg"
-        alt="Insular Casa de Cambio"
-        className={`${styles.logoImage} ${styles.fullLogo} ${!isScrolled && hasAnimated ? styles.visible : styles.hidden}`}
-        loading="eager"
-      />
+          {/* Full logo - positioned exactly over the SVG in the SAME container */}
+          <img
+            src="/logos/insular-logo-header.svg"
+            alt="Insular Casa de Cambio"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              height: '100%',
+              width: 'auto',
+              display: 'block',
+              opacity: !isScrolled && hasAnimated ? 1 : 0,
+              transition: 'opacity 0.5s ease',
+              pointerEvents: !isScrolled && hasAnimated ? 'auto' : 'none',
+              zIndex: !isScrolled && hasAnimated ? 2 : 1,
+              visibility: !isScrolled && hasAnimated ? 'visible' : 'hidden'
+            }}
+            loading="eager"
+          />
+        </div>
 
       {/* Boxed logo - visible when scrolled */}
       <img
         src="/logos/isologo_boxed.svg"
         alt="Insular Casa de Cambio"
-        className={`${styles.logoImage} ${styles.boxedLogo} ${isScrolled ? styles.visible : styles.hidden}`}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          height: '100%',
+          width: 'auto',
+          minWidth: '60px',
+          display: 'block',
+          opacity: isScrolled && hasAnimated ? 1 : 0,
+          transition: 'opacity 0.5s ease',
+          pointerEvents: isScrolled && hasAnimated ? 'auto' : 'none',
+          zIndex: isScrolled && hasAnimated ? 2 : 1,
+          visibility: isScrolled && hasAnimated ? 'visible' : 'hidden'
+        }}
         loading="eager"
       />
     </div>

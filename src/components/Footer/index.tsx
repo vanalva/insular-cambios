@@ -28,7 +28,7 @@ const Footer = () => {
             <div className={styles.footerColumn}>
               <ul className={styles.footerLinks}>
                 <li><Link to="/contacto">Contáctanos</Link></li>
-                <li><Link to="/faq">Preguntas Frecuentes</Link></li>
+                <li><Link to="/#faq">Preguntas Frecuentes</Link></li>
                 <li><Link to="/prevencion">Prevención LC/FT/FPADM</Link></li>
               </ul>
             </div>
