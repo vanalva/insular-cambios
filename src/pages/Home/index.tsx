@@ -618,7 +618,7 @@ const Home = () => {
       >
         <div className={styles.fluidContainer} aria-hidden="true">
           <canvas ref={canvasRef} className={styles.fluidCanvas} />
-          <div className={styles.grainOverlay} />
+          <div className={styles.grainOverlay} style={{ backgroundImage: `url(${withBase('images/temp/grain.webp')})` }} />
           <div className={styles.fluidNoise} />
         </div>
         <div className="container">
@@ -856,7 +856,7 @@ const Home = () => {
 
             <div data-animate="fade-left" className={styles.faqCtaContainer}>
               <div className={styles.faqCtaCard}>
-                <div className={styles.faqCtaImage}></div>
+                <div className={styles.faqCtaImage} style={{ backgroundImage: `url(${withBase('images/temp/confianza.webp')})` }}></div>
                 <div className={styles.faqCtaContent}>
                   <h2 className="h2 text-white">¿Aún tienes alguna pregunta?</h2>
                   <p className="text-white">

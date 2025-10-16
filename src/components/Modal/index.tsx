@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { withBase } from '../../utils/base';
 import { gsap } from 'gsap';
 import styles from './Modal.module.css';
 
@@ -317,7 +318,7 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
     <div className={styles.modalOverlay} onClick={handleBackdropClick}>
       <div className={styles.fluidContainer} aria-hidden="true">
         <canvas ref={canvasRef} className={styles.fluidCanvas} />
-        <div className={styles.grainOverlay} />
+        <div className={styles.grainOverlay} style={{ backgroundImage: `url(${withBase('images/temp/grain.webp')})` }} />
         <div className={styles.fluidNoise} />
       </div>
       
