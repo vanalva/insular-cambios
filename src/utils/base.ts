@@ -1,1 +1,6 @@
-export const withBase = (path: string) => new URL(path.replace(/^\//, ''), import.meta.env.BASE_URL).toString();
+export const withBase = (path: string) => {
+  const raw = import.meta.env.BASE_URL || '/';
+  const base = raw.endsWith('/') ? raw : raw + '/';
+  const p = (path || '').replace(/^\/+/, '');
+  return base + p;
+};
