@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Router from '../router';
@@ -44,7 +44,7 @@ const AppContent = () => {
 function App() {
   return (
     <HelmetProvider>
-            <BrowserRouter>
+            <BrowserRouter basename={import.meta.env.BASE_URL}>
         <AppContent />
       </BrowserRouter>
     </HelmetProvider>
@@ -52,3 +52,5 @@ function App() {
 }
 
 export default App;
+
+
