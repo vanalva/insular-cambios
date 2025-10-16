@@ -1,13 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+const PORT = Number(process.env.PORT || 5173)
+const PREVIEW_PORT = Number(process.env.PREVIEW_PORT || 4173)
+const BASE = process.env.BASE || '/'
+
 export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    port: 3000,
+    port: PORT,
     allowedHosts: ['.trycloudflare.com', '.ngrok-free.dev', '.ngrok.io', '.ngrok-free.app'],
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: PREVIEW_PORT,
   },
   build: {
     outDir: 'dist',
@@ -24,5 +31,5 @@ export default defineConfig({
       },
     },
   },
-  base: '/Insular/',
+  base: BASE,
 })
