@@ -37,7 +37,15 @@ const Contacto = () => {
       </Helmet>
 
       <Section className={styles.hero}>
-        <div className={styles.heroBackground}></div>
+        <div
+          className={styles.heroBackground}
+          style={{
+            backgroundImage: `url(${withBase('images/temp/confianza.webp')})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'left center',
+            backgroundSize: 'cover',
+          }}
+        ></div>
         <div className="container">
           <div className={styles.heroContent}>
             <div className={styles.heroLeft}>
