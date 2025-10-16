@@ -171,7 +171,15 @@ const Contacto = () => {
 
             <div data-animate="fade-left" className={styles.ctaContainer}>
               <div className={styles.ctaCard}>
-                <div className={styles.ctaImage}></div>
+                <div
+                  className={styles.ctaImage}
+                  style={{
+                    backgroundImage: `url(${withBase('images/temp/atencion.webp')})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                  }}
+                ></div>
                 <div className={styles.ctaContent}>
                   <h2 className="h2 text-white">¿Necesitas ayuda inmediata?</h2>
                   <p className="body-sm text-white">
