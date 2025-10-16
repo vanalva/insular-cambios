@@ -17,7 +17,7 @@
 .heroBackground {
   position: absolute;
   inset: var(--container-padding);
-  background: url('/images/temp/confianza.webp') left center / cover no-repeat;
+  background: url(var(--base-url)images/temp/confianza.webp) left center / cover no-repeat;
   border-radius: var(--radius-lg);
   z-index: 0;
 }
@@ -125,7 +125,7 @@
   width: 100%;
   flex: 1.2;
   min-height: 50%;
-  background: url('/images/temp/atencion.webp') center center / cover no-repeat;
+  background: url(var(--base-url)images/temp/atencion.webp) center center / cover no-repeat;
 }
 
 .ctaContent {

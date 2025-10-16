@@ -12,6 +12,9 @@ const AppContent = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Ensure CSS assets resolve under non-root base (e.g., GitHub Pages project path)
+    document.documentElement.style.setProperty('--base-url', import.meta.env.BASE_URL);
+
     // Clear existing ScrollTriggers/tweens before scheduling new ones
     cleanupAnimations();
 

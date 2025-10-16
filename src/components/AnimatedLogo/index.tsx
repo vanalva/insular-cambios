@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { withBase } from '../../utils/base';
 import { gsap } from 'gsap';
 import styles from './AnimatedLogo.module.css';
 
@@ -170,7 +171,7 @@ const AnimatedLogo = ({ onComplete, isScrolled = false }: AnimatedLogoProps) => 
 
           {/* Full logo - positioned exactly over the SVG in the SAME container */}
           <img
-            src="/logos/insular-logo-header.svg"
+            src={withBase('logos/insular-logo-header.svg')}
             alt="Insular Casa de Cambio"
             style={{
               position: 'absolute',
@@ -191,7 +192,7 @@ const AnimatedLogo = ({ onComplete, isScrolled = false }: AnimatedLogoProps) => 
 
       {/* Boxed logo - visible when scrolled */}
       <img
-        src="/logos/isologo_boxed.svg"
+        src={withBase('logos/isologo_boxed.svg')}
         alt="Insular Casa de Cambio"
         style={{
           position: 'absolute',

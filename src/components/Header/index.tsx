@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import AnimatedLogo from '../AnimatedLogo';
+import { withBase } from '../../utils/base';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -345,7 +346,7 @@ const Header = () => {
         <div className={styles.mobileMenuGrid}>
           <div ref={menuImageRef} className={styles.mobileMenuImage}>
             <img
-              src="/images/hero/home-hero.webp"
+              src={withBase('images/hero/home-hero.webp')}
               alt="Insular"
               className={styles.mobileMenuImg}
             />
@@ -380,7 +381,7 @@ const Header = () => {
               </a>
             </div>
             <img
-              src="/logos/insular-logo-header.svg"
+              src={withBase('logos/insular-logo-header.svg')}
               alt="Insular"
               className={styles.mobileMenuLogo}
             />

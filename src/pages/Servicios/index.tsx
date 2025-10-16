@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { withBase } from '../../utils/base';
 import CTAButton from '../../components/CTAButton';
 import PartnersMarquee from '../../components/PartnersMarquee';
 import styles from './Servicios.module.css';
@@ -13,20 +14,20 @@ const Servicios = () => {
     {
       title: 'Pago móvil',
       description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
-      icon: '/icons/arrow_right_naked.svg',
-      bgImage: '/images/temp/remesa-recibida.webp'
+      icon: withBase('icons/arrow_right_naked.svg'),
+      bgImage: withBase('images/temp/remesa-recibida.webp')
     },
     {
       title: 'Crédito inmediato',
       description: 'La manera más rápida de recibir los fondos directamente en una cuenta bancaria.',
-      icon: '/icons/arrow_right_naked.svg',
-      bgImage: '/images/temp/compra.webp'
+      icon: withBase('icons/arrow_right_naked.svg'),
+      bgImage: withBase('images/temp/compra.webp')
     },
     {
       title: 'Retiro físico',
       description: 'Retiro en nuestra agencia física en Caracas: Avenida Francisco de Miranda, Torre Seguros Sudamerica, local PB-7 Urbanización El Rosal, municipio Chacao.',
-      icon: '/icons/arrow_right_naked.svg',
-      bgImage: '/images/temp/team.webp'
+      icon: withBase('icons/arrow_right_naked.svg'),
+      bgImage: withBase('images/temp/team.webp')
     }
   ];
 
@@ -34,22 +35,22 @@ const Servicios = () => {
     {
       title: 'Rapidez y Eficiencia',
       description: 'Nuestras operaciones son rápidas y directas',
-      icon: '/icons/hand_coins_boxed.svg'
+      icon: withBase('icons/hand_coins_boxed.svg')
     },
     {
       title: 'Legalidad y Respaldo',
       description: 'Operamos 100% dentro del marco legal venezolano, garantizando su tranquilidad.',
-      icon: '/icons/database_dollar_boxed.svg'
+      icon: withBase('icons/database_dollar_boxed.svg')
     },
     {
       title: 'Conexión Global',
       description: 'Gracias a nuestros aliados internacionales, conectamos a Venezuela con el mundo.',
-      icon: '/icons/globe_boxed.svg'
+      icon: withBase('icons/globe_boxed.svg')
     },
     {
       title: 'Comodidad Total',
       description: 'Elija entre opciones digitales (Pago Móvil) o presenciales para sus transacciones.',
-      icon: '/icons/cards_boxed.svg'
+      icon: withBase('icons/cards_boxed.svg')
     }
   ];
 
@@ -63,7 +64,7 @@ const Servicios = () => {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroBackground}>
-          <img src="/images/temp/intuitivo.webp" alt="" />
+          <img src={withBase('images/temp/intuitivo.webp')} alt="" />
         </div>
         <div className="container">
           <div className={styles.heroContent}>

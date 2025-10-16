@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { withBase } from '../../utils/base';
 import Card from '../Card';
 import styles from './RateCards.module.css';
 
@@ -113,7 +114,7 @@ const RateCards = () => {
                 <div className={styles.change}>
                   <span className={rate.change > 0 ? styles.positive : styles.negative}>
                     <img
-                      src={rate.change > 0 ? '/icons/chevron_up_naked.svg' : '/icons/chevron_down_naked.svg'}
+                      src={withBase(rate.change > 0 ? 'icons/chevron_up_naked.svg' : 'icons/chevron_down_naked.svg')}
                       alt={rate.change > 0 ? 'up' : 'down'}
                       className={styles.changeIcon}
                     />

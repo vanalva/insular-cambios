@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { withBase } from '../../utils/base';
 import CTAButton from '../../components/CTAButton';
 import styles from './Aliados.module.css';
 
@@ -7,14 +8,14 @@ const Aliados = () => {
   const [selectedCountry, setSelectedCountry] = useState<string>('Canadá');
 
   const countries = [
-    { id: 'canada', name: 'Canadá', logo: '/logos/partners/moneygram-collab-logo.svg', bgColor: '#b8b4ff' },
-    { id: 'chile', name: 'Chile', logo: '/logos/partners/ria-collab-logo.svg', bgColor: '#ffb4d4' },
-    { id: 'colombia', name: 'Colombia', logo: '/logos/partners/remitly-collab-logo.svg', bgColor: '#b4f0e4' },
-    { id: 'costa-rica', name: 'Costa Rica', logo: '/logos/partners/papaya-collab-logo.svg', bgColor: '#d4c4ff' },
-    { id: 'ecuador', name: 'Ecuador', logo: '/logos/partners/moneygram-collab-logo.svg', bgColor: '#ffd4b4' },
-    { id: 'mexico', name: 'México', logo: '/logos/partners/ria-collab-logo.svg', bgColor: '#ffb4c4' },
-    { id: 'peru', name: 'Perú', logo: '/logos/partners/remitly-collab-logo.svg', bgColor: '#c4d4ff' },
-    { id: 'estados-unidos', name: 'Estados Unidos', logo: '/logos/partners/papaya-collab-logo.svg', bgColor: '#b4d4ff' }
+    { id: 'canada', name: 'Canadá', logo: withBase('logos/partners/moneygram-collab-logo.svg'), bgColor: '#b8b4ff' },
+    { id: 'chile', name: 'Chile', logo: withBase('logos/partners/ria-collab-logo.svg'), bgColor: '#ffb4d4' },
+    { id: 'colombia', name: 'Colombia', logo: withBase('logos/partners/remitly-collab-logo.svg'), bgColor: '#b4f0e4' },
+    { id: 'costa-rica', name: 'Costa Rica', logo: withBase('logos/partners/papaya-collab-logo.svg'), bgColor: '#d4c4ff' },
+    { id: 'ecuador', name: 'Ecuador', logo: withBase('logos/partners/moneygram-collab-logo.svg'), bgColor: '#ffd4b4' },
+    { id: 'mexico', name: 'México', logo: withBase('logos/partners/ria-collab-logo.svg'), bgColor: '#ffb4c4' },
+    { id: 'peru', name: 'Perú', logo: withBase('logos/partners/remitly-collab-logo.svg'), bgColor: '#c4d4ff' },
+    { id: 'estados-unidos', name: 'Estados Unidos', logo: withBase('logos/partners/papaya-collab-logo.svg'), bgColor: '#b4d4ff' }
   ];
 
   const selectedCountryData = countries.find(c => c.name === selectedCountry) || countries[0];
@@ -29,7 +30,7 @@ const Aliados = () => {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroBackground}>
-          <img src="/images/sections/mundo.webp" alt="" />
+          <img src={withBase('images/sections/mundo.webp')} alt="" />
         </div>
         <div className="container">
           <div className={styles.heroContent}>

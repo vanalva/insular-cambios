@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { withBase } from '../../utils/base';
 import Section from '../../components/Section';
 import CTAButton from '../../components/CTAButton';
 import styles from './Conocenos.module.css';
@@ -28,7 +29,7 @@ const Conocenos = () => {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroBackground}>
-          <img src="/images/temp/accesibilidad.webp" alt="" />
+          <img src={withBase('images/temp/accesibilidad.webp')} alt="" />
         </div>
         <div className="container">
           <div className={styles.heroContent}>
@@ -95,7 +96,7 @@ const Conocenos = () => {
       {/* Values Section */}
       <section className={styles.valuesSection}>
         <div className={styles.valuesBackground}>
-          <img src="/images/temp/intuitivo.webp" alt="" />
+          <img src={withBase('images/temp/intuitivo.webp')} alt="" />
         </div>
         <div className="container">
           <div className={styles.valuesContent}>

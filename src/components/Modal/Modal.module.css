@@ -35,7 +35,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background-image: url('/images/temp/grain.webp');
+  background-image: url(var(--base-url)images/temp/grain.webp);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

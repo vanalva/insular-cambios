@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { withBase } from '../../utils/base';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -9,7 +10,7 @@ const Footer = () => {
           {/* Logo */}
           <div className={styles.footerBrand}>
             <Link to="/" className={styles.brandLink} aria-label="Volver al inicio">
-              <img src="/logos/insular-logo.svg" alt="Insular" className={styles.brandLogo} loading="lazy" />
+              <img src={withBase('logos/insular-logo.svg')} alt="Insular" className={styles.brandLogo} loading="lazy" />
             </Link>
           </div>
 

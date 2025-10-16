@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useEffect, useRef, useState } from 'react';
+import { withBase } from '../../utils/base';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Section from '../../components/Section';
@@ -25,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch the SVG content
-    fetch('/logos/isologo_naked.svg')
+    fetch(withBase('logos/isologo_naked.svg'))
       .then(response => response.text())
       .then(svg => setSvgContent(svg));
   }, []);
@@ -639,7 +640,7 @@ const Home = () => {
             </div>
             <div className={styles.heroImageWrapper} data-animate="fade-left">
               <img
-                src="/images/hero/home-hero.webp"
+                src={withBase('images/hero/home-hero.webp')}
                 alt="Cliente feliz usando Insular"
                 className={styles.heroImage}
               />
@@ -652,7 +653,7 @@ const Home = () => {
               <div className={styles.rateHeader}>
                   <p className={styles.rateLabel}>Cambio US$</p>
                 <span className={styles.rateIcon}>
-                  <img src="/icons/arrow_top-right_naked.svg" alt="trending" />
+                  <img src={withBase('icons/arrow_top-right_naked.svg')} alt="trending" />
                 </span>
               </div>
               <p ref={usdRateRef} className={styles.rateValue}>Bs. 0,0000</p>
@@ -661,7 +662,7 @@ const Home = () => {
               <div className={styles.rateHeader}>
                   <p className={styles.rateLabel}>Cambio EUR€</p>
                 <span className={styles.rateIcon}>
-                  <img src="/icons/arrow_top-right_naked.svg" alt="trending" />
+                  <img src={withBase('icons/arrow_top-right_naked.svg')} alt="trending" />
                 </span>
               </div>
               <p ref={eurRateRef} className={styles.rateValue}>Bs. 0,0000</p>
@@ -670,7 +671,7 @@ const Home = () => {
               <div className={styles.rateHeader}>
                   <p className={styles.rateLabel}>Fecha</p>
                 <span className={styles.rateIcon}>
-                  <img src="/icons/arrow_top-right_naked.svg" alt="trending" />
+                  <img src={withBase('icons/arrow_top-right_naked.svg')} alt="trending" />
                 </span>
               </div>
               <p className={styles.rateValue}>19 / 09 / 2025</p>
@@ -744,7 +745,7 @@ const Home = () => {
         <div className="container-fluid">
           <div ref={imageWrapperRef} className={styles.paymentImageWrapper} data-animate="fade-up">
             <img
-              src="/images/sections/conexion.webp"
+              src={withBase('images/sections/conexion.webp')}
               alt="Recibe dinero a través de pago móvil y crédito inmediato"
               className={styles.paymentImage}
             />
@@ -884,4 +885,3 @@ const Home = () => {
 };
 
 export default Home;
-
