@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react'
 
 const PORT = Number(process.env.PORT || 5173)
 const PREVIEW_PORT = Number(process.env.PREVIEW_PORT || 4173)
-const BASE = process.env.BASE || '/'
+// Hardcode base for GitHub Pages project path to avoid env mismatch
+const BASE = '/insular-cambios/'
 
 export default defineConfig({
   plugins: [react()],

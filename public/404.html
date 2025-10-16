@@ -4,14 +4,16 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      // GitHub Pages SPA fallback
-      // Redirects 404s for deep links back to the index while preserving the path
+      // GitHub Pages SPA fallback (works for user or project sites)
       (function() {
         var l = window.location;
-        var repoBase = '%BASE_URL%'.replace(/\/+/g,'/'); // e.g. '/insular-cambios/' or '/'
-        if (!repoBase.endsWith('/')) repoBase += '/';
-        var prefix = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repoBase;
-        var rest = l.pathname.replace(new RegExp('^' + repoBase.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')), '');
+        var segments = l.pathname.split('/').filter(Boolean);
+        // If this is a project page (username.github.io/repo), keep 1 segment (the repo name)
+        // If this is a user/organization page (username.github.io), keep 0
+        var keep = segments.length > 0 ? 1 : 0;
+        var base = '/' + segments.slice(0, keep).join('/') + (keep ? '/' : '');
+        var prefix = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + base;
+        var rest = segments.slice(keep).join('/');
         var newUrl = prefix + '?/' + rest + (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') + l.hash;
         l.replace(newUrl);
       })();
@@ -21,4 +23,3 @@
     <p>Redirecting...</p>
   </body>
   </html>
-
