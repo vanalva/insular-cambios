@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { withBase } from '../../utils/base';
 import Section from '../../components/Section';
 import CTAButton from '../../components/CTAButton';
 import styles from './Contacto.module.css';
